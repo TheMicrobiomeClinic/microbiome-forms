@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TMC FMT Sticker — 164 × 103 mm</title>
+<style>
+  :root{
+    --ink:#000;
+    --w:103mm;   /* width  */
+    --h:164mm;   /* height */
+  }
+
+  *{box-sizing:border-box;}
+
+  html,body{
+    margin:0;
+    padding:0;
+    background:#e9e9ec;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+
+  /* on-screen toolbar — hidden when printing */
+  .toolbar{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:center;
+    padding:14px;
+    background:#fff;
+    border-bottom:1px solid #ccc;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  .toolbar button{
+    font:600 14px/1 Arial, sans-serif;
+    padding:10px 18px;
+    border:1px solid #000;
+    background:#000;
+    color:#fff;
+    border-radius:6px;
+    cursor:pointer;
+  }
+  .toolbar button.secondary{
+    background:#fff;
+    color:#000;
+  }
+  .toolbar .hint{font-size:12px;color:#666;}
+
+  .stage{
+    display:flex;
+    justify-content:center;
+    padding:24px;
+  }
+
+  /* THE STICKER ------------------------------------------------ */
+  .sticker{
+    width:var(--w);
+    height:var(--h);
+    background:#fff;
+    border:1px solid #000;
+    padding:9mm 8mm;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .logo{
+    width:46mm;
+    margin-top:2mm;
+    margin-bottom:2mm;
+  }
+  .logo svg{width:100%;height:auto;display:block;}
+
+  .label-fmt{
+    font-size:7mm;
+    font-weight:700;
+    letter-spacing:0.18em;
+    margin-top:1mm;
+    margin-bottom:1mm;
+  }
+  .sub{
+    font-size:3.1mm;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    text-align:center;
+    margin-bottom:4mm;
+  }
+
+  .rule{
+    width:100%;
+    border:none;
+    border-top:1.2px solid #000;
+    margin:3mm 0;
+  }
+
+  .fields{
+    width:100%;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:6mm;
+  }
+  .field label{
+    display:block;
+    font-size:3mm;
+    font-weight:700;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    margin-bottom:1.5mm;
+  }
+  .field input{
+    width:100%;
+    border:none;
+    border-bottom:1.4px solid #000;
+    font-size:5.5mm;
+    font-weight:600;
+    padding:1mm 0.5mm;
+    color:#000;
+    background:transparent;
+    font-family:inherit;
+  }
+  .field input:focus{outline:none;background:#f3f3f3;}
+  .field input::placeholder{color:#bbb;font-weight:400;}
+
+  .footer{
+    width:100%;
+    text-align:center;
+    font-size:2.6mm;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    margin-top:3mm;
+    color:#000;
+  }
+
+  /* PRINT ------------------------------------------------------ */
+  @page{
+    size:103mm 164mm;   /* width height */
+    margin:0;
+  }
+  @media print{
+    html,body{background:#fff;}
+    .toolbar{display:none !important;}
+    .stage{padding:0;}
+    .sticker{
+      border:none;
+      width:103mm;
+      height:164mm;
+      page-break-after:avoid;
+    }
+    .field input:focus{background:transparent;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <button onclick="window.print()">Print / Save as PDF</button>
+    <button class="secondary" onclick="clearFields()">Clear fields</button>
+    <span class="hint">Type into the fields, then Print → “Save as PDF”. Paper size: 103 × 164&nbsp;mm.</span>
+  </div>
+
+  <div class="stage">
+    <div class="sticker">
+
+      <!-- TMC stacked wordmark -->
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="700 750 600 480">
+          <g fill="#000">
+            <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+            <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+            <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+            <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+            <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+            <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+            <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+            <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+            <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+            <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+            <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+            <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+            <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+            <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+            <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+            <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="label-fmt">FMT</div>
+      <div class="sub">Faecal Microbiota Transplant&nbsp;·&nbsp;Enema</div>
+
+      <hr class="rule">
+
+      <div class="fields">
+        <div class="field">
+          <label for="patient">Patient Name</label>
+          <input id="patient" type="text" placeholder="" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="donor">Donor Number</label>
+          <input id="donor" type="text" placeholder="" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="expiry">Expiry Date</label>
+          <input id="expiry" type="text" placeholder="DD / MM / YYYY" autocomplete="off">
+        </div>
+      </div>
+
+      <hr class="rule">
+      <div class="footer">Store frozen · Keep upright · For single patient use only</div>
+
+    </div>
+  </div>
+
+  <script>
+    // keep typed values in the printed output
+    document.querySelectorAll('.field input').forEach(function(el){
+      el.addEventListener('input', function(){
+        this.setAttribute('value', this.value);
+      });
+    });
+    function clearFields(){
+      document.querySelectorAll('.field input').forEach(function(el){
+        el.value=''; el.setAttribute('value','');
+      });
+      document.getElementById('patient').focus();
+    }
+  </script>
+
+</body>
+</html>
