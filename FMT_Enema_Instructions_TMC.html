@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FMT Enema Instructions · The Microbiome Clinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky-blue:  #7EC2F1;
+    --peach:     #FFB56C;
+    --dark-blue: #316A9C;
+    --brown:     #5D5A49;
+    --cream:     #FFFEF0;
+    --brown-60:  rgba(93, 90, 73, 0.60);
+    --brown-30:  rgba(93, 90, 73, 0.30);
+    --brown-15:  rgba(93, 90, 73, 0.15);
+    --heading:   'General Sans', 'Helvetica Neue', Arial, sans-serif;
+    --body:      'Crimson Pro', 'Georgia', serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--body);
+    color: var(--brown);
+    background: #e9e6d6;
+    font-size: 11pt;
+    line-height: 1.35;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ---------- Strict A4 page ---------- */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    margin: 16px auto;
+    background: var(--cream);
+    padding: 14mm 18mm 22mm;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  }
+
+  /* ---------- Cover (page 1) ---------- */
+  .page-cover {
+    display: flex;
+    flex-direction: column;
+  }
+  .page-cover .header-center { flex: none; }
+  .page-cover .cover-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6mm 0 8mm;
+  }
+  .page-cover .cover-bottom { flex: none; }
+
+  .header-center {
+    text-align: center;
+    padding-bottom: 6mm;
+    border-bottom: 1px solid var(--brown-30);
+    margin-bottom: 0;
+  }
+  .logo-stack { width: 22mm; height: auto; display: inline-block; }
+  .doc-meta {
+    margin-top: 4mm;
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7.5pt;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+  }
+  .doc-meta .pill {
+    display: inline-block;
+    background: var(--sky-blue);
+    color: var(--cream);
+    padding: 4px 10px 3px;
+    letter-spacing: 0.22em;
+    margin-right: 6mm;
+  }
+  .doc-meta .sep {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--sky-blue);
+    border-radius: 50%;
+    margin: 0 8px;
+    vertical-align: middle;
+  }
+
+  .cover-eyebrow {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8pt;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    margin-bottom: 4mm;
+  }
+  .cover-body h1 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 32pt;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--brown);
+    margin: 0 0 4mm;
+  }
+  .cover-body h2 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 15pt;
+    color: var(--dark-blue);
+    margin: 0 0 9mm;
+    line-height: 1.2;
+  }
+  .cover-fields {
+    background: rgba(126, 194, 241, 0.10);
+    border-left: 3px solid var(--sky-blue);
+    padding: 5mm 6mm;
+    max-width: 130mm;
+    margin-bottom: 12mm;
+  }
+  .cover-fields .field {
+    display: flex;
+    align-items: baseline;
+    gap: 4mm;
+    padding: 2mm 0;
+    border-bottom: 1px dashed var(--brown-30);
+  }
+  .cover-fields .field:last-child { border-bottom: none; }
+  .cover-fields label {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    min-width: 52mm;
+  }
+  .cover-fields .line {
+    flex: 1;
+    border-bottom: 1px solid var(--brown-60);
+    height: 6mm;
+  }
+  .cover-author { margin-top: 0; }
+  .cover-author .name {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 13pt;
+    color: var(--brown);
+    margin: 0 0 1mm;
+  }
+  .cover-author .role {
+    font-family: var(--body);
+    font-size: 10.5pt;
+    color: var(--brown);
+    margin: 0;
+    line-height: 1.4;
+  }
+  .cover-bottom {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    border-top: 1px solid var(--brown-15);
+    padding-top: 5mm;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ---------- Slim header (every content page) ---------- */
+  .header-slim {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5mm;
+    margin-bottom: 6mm;
+    border-bottom: 1px solid var(--brown-30);
+  }
+  .header-slim .logo-mini { width: 13mm; height: auto; }
+  .header-slim .meta {
+    text-align: right;
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    line-height: 1.6;
+  }
+  .header-slim .meta .title { color: var(--brown); }
+
+  /* ---------- Contents (page 2) ---------- */
+  .contents h2.contents-title {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 22pt;
+    color: var(--brown);
+    margin: 0 0 5mm;
+    letter-spacing: -0.01em;
+  }
+  ol.toc {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 6mm;
+    counter-reset: toc;
+  }
+  ol.toc li {
+    display: flex;
+    align-items: baseline;
+    gap: 5mm;
+    padding: 2mm 0;
+    border-bottom: 1px dotted var(--brown-30);
+    font-family: var(--body);
+    font-size: 11pt;
+  }
+  ol.toc li .num {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8pt;
+    letter-spacing: 0.15em;
+    color: var(--cream);
+    background: var(--brown);
+    padding: 3px 7px 2px;
+    text-transform: uppercase;
+    line-height: 1;
+    min-width: 14mm;
+    text-align: center;
+  }
+  ol.toc li .label { flex: 1; }
+  ol.toc li.extra { color: var(--brown-60); font-style: italic; }
+  ol.toc li.extra .num {
+    background: transparent;
+    color: var(--brown-60);
+    border: 1px solid var(--brown-30);
+  }
+
+  /* ---------- Sections ---------- */
+  section { margin-bottom: 6mm; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 3mm;
+  }
+  .section-num {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8pt;
+    letter-spacing: 0.15em;
+    color: var(--cream);
+    background: var(--brown);
+    padding: 3px 7px 2px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  h2 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 14.5pt;
+    color: var(--brown);
+    margin: 0;
+    line-height: 1.1;
+  }
+  h3 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 11pt;
+    color: var(--brown);
+    margin: 4mm 0 1.5mm;
+    line-height: 1.2;
+  }
+  h3:first-child { margin-top: 0; }
+
+  p {
+    font-family: var(--body);
+    font-size: 10.5pt;
+    line-height: 1.4;
+    color: var(--brown);
+    margin: 0 0 2.5mm;
+  }
+  p em { font-style: italic; }
+
+  ul.brand-list, ol.brand-list {
+    margin: 0 0 3mm 0;
+    padding-left: 4mm;
+    font-family: var(--body);
+    font-size: 10.5pt;
+    line-height: 1.4;
+    color: var(--brown);
+    list-style: none;
+    counter-reset: brand-counter;
+  }
+  ul.brand-list li, ol.brand-list li {
+    position: relative;
+    padding-left: 6mm;
+    margin-bottom: 1.4mm;
+  }
+  ul.brand-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2.4mm;
+    width: 1.7mm;
+    height: 1.7mm;
+    background: var(--sky-blue);
+    border-radius: 50%;
+  }
+  ol.brand-list { counter-reset: brand-counter; }
+  ol.brand-list li { counter-increment: brand-counter; }
+  ol.brand-list li::before {
+    content: counter(brand-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5mm;
+    text-align: right;
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9.5pt;
+    color: var(--sky-blue);
+  }
+  ul.brand-list li em, ol.brand-list li em { font-style: italic; }
+  ul.brand-list li strong, ol.brand-list li strong { font-weight: 700; color: var(--brown); }
+
+  /* ---------- Callouts ---------- */
+  .callout {
+    background: rgba(126, 194, 241, 0.12);
+    border-left: 3px solid var(--sky-blue);
+    padding: 3.5mm 5mm;
+    margin: 0 0 3mm;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout .label {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin: 0 0 1.5mm;
+    display: block;
+  }
+
+  .callout--warn {
+    background: rgba(255, 181, 108, 0.18);
+    border-left-color: var(--peach);
+  }
+  .callout--warn .label { color: var(--brown); }
+
+  .callout--emergency {
+    background: rgba(93, 90, 73, 0.08);
+    border-left-color: var(--brown);
+    text-align: center;
+    padding: 3mm 5mm;
+  }
+  .callout--emergency p {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin: 0;
+  }
+
+  /* ---------- Tables ---------- */
+  table.brand-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 3mm;
+    font-family: var(--body);
+    font-size: 10pt;
+  }
+  table.brand-table thead th {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--brown);
+    text-align: left;
+    padding: 2.5mm 4mm;
+  }
+  table.brand-table tbody td {
+    padding: 2mm 4mm;
+    border-bottom: 1px solid var(--brown-15);
+    vertical-align: top;
+    line-height: 1.35;
+  }
+  table.brand-table tbody tr:nth-child(even) td {
+    background: rgba(126, 194, 241, 0.06);
+  }
+
+  /* ---------- Contact card ---------- */
+  .contact-card {
+    background: rgba(126, 194, 241, 0.14);
+    border-left: 3px solid var(--sky-blue);
+    padding: 5mm 6mm;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3mm 6mm;
+    margin: 0 0 3mm;
+  }
+  .contact-card .item {
+    flex: 0 0 calc(50% - 4mm);
+    min-width: 60mm;
+  }
+  .contact-card .item--wide {
+    flex: 0 0 100%;
+  }
+  .contact-card .item label {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    display: block;
+    margin-bottom: 1mm;
+  }
+  .contact-card .item .value {
+    font-family: var(--body);
+    font-size: 10.5pt;
+    color: var(--brown);
+    line-height: 1.3;
+  }
+
+  /* ---------- Footer (every content page) ---------- */
+  .footer {
+    position: absolute;
+    left: 18mm;
+    right: 18mm;
+    bottom: 10mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    padding-top: 4mm;
+    border-top: 1px solid var(--brown-15);
+  }
+  .footer .mono-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--sky-blue);
+    display: inline-block;
+    margin: 0 8px;
+    vertical-align: middle;
+  }
+
+  /* ---------- Print ---------- */
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: var(--cream); }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      page-break-after: always;
+    }
+    .page:last-of-type { page-break-after: auto; }
+    .no-print { display: none; }
+  }
+
+  .print-bar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+  }
+  .print-bar button {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--brown);
+    border: none;
+    padding: 10px 18px;
+    cursor: pointer;
+  }
+  .print-bar button:hover { background: var(--dark-blue); }
+</style>
+</head>
+<body>
+
+<div class="print-bar no-print">
+  <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="page">
+  <header class="header-center" style="padding-bottom: 4mm; margin-bottom: 5mm;">
+    <svg class="logo-stack" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="doc-meta">
+      <span class="pill">FMT enema instructions</span>
+      Form FMT-EI-01 <span class="sep"></span> v2026.1
+    </div>
+  </header>
+
+  <div style="margin-bottom: 4mm;">
+    <h1 style="font-family: var(--heading); font-weight: 500; font-size: 20pt; line-height: 1; letter-spacing: -0.02em; color: var(--brown); margin: 0 0 2mm;">Enema Instructions</h1>
+    <p style="font-family: var(--body); font-size: 10pt; line-height: 1.35; color: var(--brown); margin: 0; max-width: 165mm;">A step-by-step guide for self-administering your FMT enema at home. Please read in full before commencing — and contact the clinic if anything is unclear.</p>
+  </div>
+
+  <section style="margin-bottom: 4mm;">
+    <div class="section-head" style="margin-bottom: 2mm;">
+      <span class="section-num">01</span>
+      <h2 style="font-size: 13pt;">Preparation &amp; Equipment</h2>
+    </div>
+    <p style="margin-bottom: 1.5mm;"><strong>Defrosting.</strong> Place two syringes in a container of <em>hot tap water</em> until warm and completely defrosted — about <strong>30–40 minutes</strong>.</p>
+    <p><strong>Per-treatment kit.</strong> <strong>2 ×</strong> FMT syringes, <strong>1 ×</strong> disposable catheter, <strong>1 ×</strong> disposable blue mat, <strong>1 ×</strong> sachet of lubricant.</p>
+  </section>
+
+  <section style="margin-bottom: 4mm;">
+    <div class="section-head" style="margin-bottom: 2mm;">
+      <span class="section-num">02</span>
+      <h2 style="font-size: 13pt;">Step-by-Step Administration</h2>
+    </div>
+    <ol class="brand-list" style="margin-bottom: 0;">
+      <li><strong>Set up equipment.</strong> Remove the red stopper and lid from the syringes (hold upright so they don't spill). Open the catheter and lubricate the end.</li>
+      <li><strong>Lay on your left side.</strong></li>
+      <li><strong>Slowly insert the catheter</strong> into your rectum — as high as possible. It cannot be inserted too far.</li>
+      <li><strong>Attach one syringe</strong> into the orange port at the end of the catheter.</li>
+      <li><strong>Slowly depress the syringe until empty.</strong> If there's resistance, pull the catheter out a little or re-draw. If still stuck, remove the catheter and check the holes — <em>do not</em> force the plunger, the syringe can pop.</li>
+      <li><strong>Fold or kink the catheter</strong> and remove the empty syringe — this stops the transplant flushing back up.</li>
+      <li><strong>Insert the second syringe and depress until empty.</strong></li>
+      <li><strong>Remove the catheter.</strong></li>
+      <li><strong>Remain lying down for 30 minutes</strong> minimum. Lying down ensures you can hold it in; the bacteria absorb quickly. Hold off using your bowels for as long as comfortable — there is no maximum.</li>
+      <li><strong>Dispose of all equipment</strong> in the bin. You'll get a new kit for each treatment.</li>
+    </ol>
+  </section>
+
+  <section style="margin-bottom: 4mm;">
+    <div class="section-head" style="margin-bottom: 2mm;">
+      <span class="section-num">03</span>
+      <h2 style="font-size: 13pt;">If Something Goes Wrong</h2>
+    </div>
+    <div class="callout callout--warn" style="padding: 2.5mm 5mm; margin-bottom: 2mm;">
+      <span class="label" style="margin-bottom: 1mm;">Important</span>
+      <p>If you have any difficulty administering the enema, or any concerns during or after the procedure, contact the clinic. If you experience severe pain, bleeding, or fever, <strong>stop the program and seek medical attention immediately.</strong></p>
+    </div>
+    <div class="callout callout--emergency" style="padding: 2mm 5mm;">
+      <p>In a medical emergency, call 000 immediately.</p>
+    </div>
+  </section>
+
+  <section style="margin-bottom: 0;">
+    <div class="section-head" style="margin-bottom: 2mm;">
+      <span class="section-num">04</span>
+      <h2 style="font-size: 13pt;">Contact</h2>
+    </div>
+    <div class="callout" style="padding: 3mm 5mm; margin-bottom: 0;">
+      <p style="margin: 0; font-size: 10pt;"><strong>The Microbiome Clinic™</strong> &nbsp;·&nbsp; reception@themicrobiomeclinic.com.au &nbsp;·&nbsp; 03 9007 2630 &nbsp;·&nbsp; Level 1, 8 Eddy Street, Moonee Ponds VIC 3039 &nbsp;·&nbsp; themicrobiomeclinic.com.au</p>
+    </div>
+  </section>
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> reception@themicrobiomeclinic.com.au</div>
+    <div>Page 1 of 1</div>
+  </div>
+</div>
+
+</body>
+</html>
