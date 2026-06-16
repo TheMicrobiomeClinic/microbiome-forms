@@ -1,0 +1,2033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faecal Microbiota Transplant — Enema Delivery · The Microbiome Clinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky-blue:  #7EC2F1;
+    --peach:     #FFB56C;
+    --dark-blue: #316A9C;
+    --brown:     #5D5A49;
+    --cream:     #FFFEF0;
+    --brown-60:  rgba(93, 90, 73, 0.60);
+    --brown-30:  rgba(93, 90, 73, 0.30);
+    --brown-15:  rgba(93, 90, 73, 0.15);
+    --heading:   'General Sans', 'Helvetica Neue', Arial, sans-serif;
+    --body:      'Crimson Pro', 'Georgia', serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--body);
+    color: var(--brown);
+    background: #e9e6d6;
+    font-size: 11pt;
+    line-height: 1.35;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ---------- Strict A4 page ---------- */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    margin: 16px auto;
+    background: var(--cream);
+    padding: 14mm 18mm 22mm;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  }
+
+  /* ---------- Cover (page 1) ---------- */
+  .page-cover {
+    display: flex;
+    flex-direction: column;
+  }
+  .page-cover .header-center { flex: none; }
+  .page-cover .cover-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6mm 0 8mm;
+  }
+  .page-cover .cover-bottom { flex: none; }
+
+  .header-center {
+    text-align: center;
+    padding-bottom: 6mm;
+    border-bottom: 1px solid var(--brown-30);
+    margin-bottom: 0;
+  }
+  .logo-stack { width: 22mm; height: auto; display: inline-block; }
+  .doc-meta {
+    margin-top: 4mm;
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7.5pt;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+  }
+  .doc-meta .pill {
+    display: inline-block;
+    background: var(--sky-blue);
+    color: var(--cream);
+    padding: 4px 10px 3px;
+    letter-spacing: 0.22em;
+    margin-right: 6mm;
+  }
+  .doc-meta .sep {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--sky-blue);
+    border-radius: 50%;
+    margin: 0 8px;
+    vertical-align: middle;
+  }
+
+  .cover-eyebrow {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8pt;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    margin-bottom: 4mm;
+  }
+  .cover-body h1 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 32pt;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--brown);
+    margin: 0 0 4mm;
+  }
+  .cover-body h2 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 15pt;
+    color: var(--dark-blue);
+    margin: 0 0 9mm;
+    line-height: 1.2;
+  }
+  .cover-fields {
+    background: rgba(126, 194, 241, 0.10);
+    border-left: 3px solid var(--sky-blue);
+    padding: 5mm 6mm;
+    max-width: 130mm;
+    margin-bottom: 12mm;
+  }
+  .cover-fields .field {
+    display: flex;
+    align-items: baseline;
+    gap: 4mm;
+    padding: 2mm 0;
+    border-bottom: 1px dashed var(--brown-30);
+  }
+  .cover-fields .field:last-child { border-bottom: none; }
+  .cover-fields label {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    min-width: 52mm;
+  }
+  .cover-fields .line {
+    flex: 1;
+    border-bottom: 1px solid var(--brown-60);
+    height: 6mm;
+  }
+  .cover-author { margin-top: 0; }
+  .cover-author .name {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 13pt;
+    color: var(--brown);
+    margin: 0 0 1mm;
+  }
+  .cover-author .role {
+    font-family: var(--body);
+    font-size: 10.5pt;
+    color: var(--brown);
+    margin: 0;
+    line-height: 1.4;
+  }
+  .cover-bottom {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    border-top: 1px solid var(--brown-15);
+    padding-top: 5mm;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ---------- Slim header (every content page) ---------- */
+  .header-slim {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5mm;
+    margin-bottom: 6mm;
+    border-bottom: 1px solid var(--brown-30);
+  }
+  .header-slim .logo-mini { width: 13mm; height: auto; }
+  .header-slim .meta {
+    text-align: right;
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    line-height: 1.6;
+  }
+  .header-slim .meta .title { color: var(--brown); }
+
+  /* ---------- Contents (page 2) ---------- */
+  .contents h2.contents-title {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 22pt;
+    color: var(--brown);
+    margin: 0 0 5mm;
+    letter-spacing: -0.01em;
+  }
+  ol.toc {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 6mm;
+    counter-reset: toc;
+  }
+  ol.toc li {
+    display: flex;
+    align-items: baseline;
+    gap: 5mm;
+    padding: 2mm 0;
+    border-bottom: 1px dotted var(--brown-30);
+    font-family: var(--body);
+    font-size: 11pt;
+  }
+  ol.toc li .num {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8pt;
+    letter-spacing: 0.15em;
+    color: var(--cream);
+    background: var(--brown);
+    padding: 3px 7px 2px;
+    text-transform: uppercase;
+    line-height: 1;
+    min-width: 14mm;
+    text-align: center;
+  }
+  ol.toc li .label { flex: 1; }
+  ol.toc li.extra { color: var(--brown-60); font-style: italic; }
+  ol.toc li.extra .num {
+    background: transparent;
+    color: var(--brown-60);
+    border: 1px solid var(--brown-30);
+  }
+
+  /* ---------- Sections ---------- */
+  section { margin-bottom: 6mm; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 3mm;
+  }
+  .section-num {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8pt;
+    letter-spacing: 0.15em;
+    color: var(--cream);
+    background: var(--brown);
+    padding: 3px 7px 2px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  h2 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 14.5pt;
+    color: var(--brown);
+    margin: 0;
+    line-height: 1.1;
+  }
+  h3 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 11pt;
+    color: var(--brown);
+    margin: 4mm 0 1.5mm;
+    line-height: 1.2;
+  }
+  h3:first-child { margin-top: 0; }
+
+  p {
+    font-family: var(--body);
+    font-size: 10.5pt;
+    line-height: 1.4;
+    color: var(--brown);
+    margin: 0 0 2.5mm;
+  }
+  p em { font-style: italic; }
+
+  ul.brand-list, ol.brand-list {
+    margin: 0 0 3mm 0;
+    padding-left: 4mm;
+    font-family: var(--body);
+    font-size: 10.5pt;
+    line-height: 1.4;
+    color: var(--brown);
+    list-style: none;
+    counter-reset: brand-counter;
+  }
+  ul.brand-list li, ol.brand-list li {
+    position: relative;
+    padding-left: 6mm;
+    margin-bottom: 1.4mm;
+  }
+  ul.brand-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2.4mm;
+    width: 1.7mm;
+    height: 1.7mm;
+    background: var(--sky-blue);
+    border-radius: 50%;
+  }
+  ol.brand-list { counter-reset: brand-counter; }
+  ol.brand-list li { counter-increment: brand-counter; }
+  ol.brand-list li::before {
+    content: counter(brand-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5mm;
+    text-align: right;
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9.5pt;
+    color: var(--sky-blue);
+  }
+  ul.brand-list li em, ol.brand-list li em { font-style: italic; }
+  ul.brand-list li strong, ol.brand-list li strong { font-weight: 700; color: var(--brown); }
+
+  /* ---------- Callouts ---------- */
+  .callout {
+    background: rgba(126, 194, 241, 0.12);
+    border-left: 3px solid var(--sky-blue);
+    padding: 3.5mm 5mm;
+    margin: 0 0 3mm;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout .label {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin: 0 0 1.5mm;
+    display: block;
+  }
+
+  .callout--warn {
+    background: rgba(255, 181, 108, 0.18);
+    border-left-color: var(--peach);
+  }
+  .callout--warn .label { color: var(--brown); }
+
+  .callout--emergency {
+    background: rgba(93, 90, 73, 0.08);
+    border-left-color: var(--brown);
+    text-align: center;
+    padding: 3mm 5mm;
+  }
+  .callout--emergency p {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin: 0;
+  }
+
+  /* ---------- Tables ---------- */
+  table.brand-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 3mm;
+    font-family: var(--body);
+    font-size: 10pt;
+  }
+  table.brand-table thead th {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--brown);
+    text-align: left;
+    padding: 2.5mm 4mm;
+  }
+  table.brand-table tbody td {
+    padding: 2mm 4mm;
+    border-bottom: 1px solid var(--brown-15);
+    vertical-align: top;
+    line-height: 1.35;
+  }
+  table.brand-table tbody tr:nth-child(even) td {
+    background: rgba(126, 194, 241, 0.06);
+  }
+
+  /* ---------- Contact card ---------- */
+  .contact-card {
+    background: rgba(126, 194, 241, 0.14);
+    border-left: 3px solid var(--sky-blue);
+    padding: 5mm 6mm;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3mm 6mm;
+    margin: 0 0 3mm;
+  }
+  .contact-card .item {
+    flex: 0 0 calc(50% - 4mm);
+    min-width: 60mm;
+  }
+  .contact-card .item--wide {
+    flex: 0 0 100%;
+  }
+  .contact-card .item label {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    display: block;
+    margin-bottom: 1mm;
+  }
+  .contact-card .item .value {
+    font-family: var(--body);
+    font-size: 10.5pt;
+    color: var(--brown);
+    line-height: 1.3;
+  }
+
+  /* ---------- Footer (every content page) ---------- */
+  .footer {
+    position: absolute;
+    left: 18mm;
+    right: 18mm;
+    bottom: 10mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    padding-top: 4mm;
+    border-top: 1px solid var(--brown-15);
+  }
+  .footer .mono-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--sky-blue);
+    display: inline-block;
+    margin: 0 8px;
+    vertical-align: middle;
+  }
+
+  /* ---------- Print ---------- */
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: var(--cream); }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      page-break-after: always;
+    }
+    .page:last-of-type { page-break-after: auto; }
+    .no-print { display: none; }
+  }
+
+  .print-bar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+  }
+  .print-bar button {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--brown);
+    border: none;
+    padding: 10px 18px;
+    cursor: pointer;
+  }
+  .print-bar button:hover { background: var(--dark-blue); }
+
+  /* ===== Scoped consent-form component CSS ===== */
+  .consent-scope /* ---------- Title block ---------- */
+  .title-block { margin-bottom: 6mm; }
+  .consent-scope h1 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 23pt;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--brown);
+    margin: 0 0 3mm;
+  }
+  .consent-scope .subtitle {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 10pt;
+    letter-spacing: 0.04em;
+    color: var(--dark-blue);
+    margin: 0 0 4mm;
+  }
+  .consent-scope .intro {
+    font-family: var(--body);
+    font-size: 10.5pt;
+    line-height: 1.4;
+    color: var(--brown);
+    margin: 0;
+  }
+  .consent-scope .intro em { font-style: italic; }
+  .consent-scope /* ---------- ID strip ---------- */
+  .id-strip {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.6fr;
+    gap: 4mm 7mm;
+    padding: 4mm 5mm;
+    margin-bottom: 6mm;
+    background: rgba(126, 194, 241, 0.10);
+    border-left: 3px solid var(--sky-blue);
+  }
+  .consent-scope .id-strip .field { display: flex; flex-direction: column; }
+  .consent-scope .id-strip label {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7pt;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    margin-bottom: 2mm;
+  }
+  .consent-scope .id-strip .line {
+    border: none;
+    border-bottom: 1px solid var(--brown-60);
+    height: 7mm;
+    background: transparent;
+    font-family: var(--body);
+    font-size: 11pt;
+    color: var(--brown);
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none; appearance: none; border-radius: 0;
+  }
+  .consent-scope .id-strip .line:focus { background: rgba(126,194,241,0.12); border-bottom-color: var(--brown); }
+  .consent-scope /* ---------- Section ---------- */
+  section { margin-bottom: 4mm; break-inside: avoid; }
+  .consent-scope .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 3mm;
+  }
+  .consent-scope .section-num {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8pt;
+    letter-spacing: 0.15em;
+    color: var(--cream);
+    background: var(--brown);
+    padding: 3px 7px 2px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .consent-scope h2 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 13pt;
+    color: var(--brown);
+    margin: 0;
+    line-height: 1.1;
+  }
+  .consent-scope .section-cont {
+    font-size: 9pt;
+    color: var(--brown-60);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-left: 4mm;
+  }
+  .consent-scope /* ---------- Prose ---------- */
+  p.body-text {
+    font-family: var(--body);
+    font-size: 10pt;
+    line-height: 1.34;
+    color: var(--brown);
+    margin: 0 0 2.2mm;
+  }
+  .consent-scope p.body-text .lead {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9.5pt;
+    color: var(--dark-blue);
+    letter-spacing: 0.01em;
+  }
+  .consent-scope .body-text em { font-style: italic; }
+  .consent-scope ul.bullets {
+    margin: 0 0 2.4mm 6mm;
+    padding: 0;
+    font-family: var(--body);
+    font-size: 10pt;
+    line-height: 1.32;
+    color: var(--brown);
+  }
+  .consent-scope ul.bullets li { margin-bottom: 1.2mm; }
+  .consent-scope ul.bullets li strong {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9.5pt;
+    color: var(--brown);
+  }
+  .consent-scope .callout {
+    background: rgba(255, 181, 108, 0.14);
+    border-left: 3px solid var(--peach);
+    padding: 4mm 5mm;
+    margin: 0 0 3.2mm;
+    font-family: var(--body);
+    font-size: 10pt;
+    line-height: 1.34;
+  }
+  .consent-scope .callout strong {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9.5pt;
+  }
+  .consent-scope .routes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+    margin: 0 0 3mm;
+  }
+  .consent-scope .routes .route {
+    border: 1px solid var(--brown-30);
+    padding: 3.5mm 4mm;
+    text-align: center;
+  }
+  .consent-scope .routes .route .label {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9.5pt;
+    color: var(--brown);
+    letter-spacing: 0.02em;
+  }
+  .consent-scope .routes .route .desc {
+    font-family: var(--body);
+    font-size: 9pt;
+    color: var(--brown-60);
+    margin-top: 1.5mm;
+  }
+  .consent-scope /* ---------- Consent statements ---------- */
+  .consent-list { counter-reset: cstmt; margin: 0 0 4mm; }
+  .consent-scope .consent-item {
+    display: flex;
+    gap: 4mm;
+    margin-bottom: 2mm;
+    break-inside: avoid;
+  }
+  .consent-scope .consent-item .tick {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 4mm; height: 4mm;
+    border: 1px solid var(--brown);
+    background: transparent;
+    flex-shrink: 0;
+    margin: 1mm 0 0;
+    padding: 0;
+    border-radius: 0;
+    cursor: pointer;
+    position: relative;
+  }
+  .consent-scope .consent-item .tick:checked { background: var(--brown); }
+  .consent-scope .consent-item .tick:checked::after {
+    content: '';
+    position: absolute;
+    left: 1.1mm;
+    top: 0.2mm;
+    width: 1.4mm;
+    height: 2.5mm;
+    border: solid var(--cream);
+    border-width: 0 0.5mm 0.5mm 0;
+    transform: rotate(45deg);
+  }
+  .consent-scope .consent-item .tick:focus-visible { outline: 2px solid var(--sky-blue); outline-offset: 1px; }
+  .consent-scope .consent-item p {
+    margin: 0;
+    font-family: var(--body);
+    font-size: 10pt;
+    line-height: 1.34;
+  }
+  .consent-scope .consent-item p em { font-style: italic; }
+  .consent-scope .consent-item p .cite {
+    font-style: italic;
+    color: var(--brown-60);
+    font-size: 9.5pt;
+  }
+  .consent-scope /* ---------- Signature ---------- */
+  .auth-box {
+    border: 1px solid var(--brown-30);
+    padding: 4mm 6mm;
+    margin-top: 2.5mm;
+    break-inside: avoid;
+  }
+  .consent-scope .auth-box h3 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 10pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin: 0 0 3mm;
+  }
+  .consent-scope .auth-statement {
+    font-family: var(--body);
+    font-size: 10pt;
+    line-height: 1.35;
+    margin: 0 0 4mm;
+  }
+  .consent-scope .sig-field { display: flex; flex-direction: column; margin-bottom: 3mm; }
+  .consent-scope .sig-field label {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7.5pt;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    margin-bottom: 2mm;
+  }
+  .consent-scope .sig-field .line {
+    border: none;
+    border-bottom: 1px solid var(--brown-60);
+    height: 8mm;
+    background: transparent;
+    width: 100%;
+    font-family: var(--body);
+    font-size: 11pt;
+    color: var(--brown);
+    outline: none;
+    -webkit-appearance: none; appearance: none; border-radius: 0;
+    padding: 0 2px;
+  }
+  .consent-scope .sig-field .line:focus { background: rgba(126,194,241,0.12); border-bottom-color: var(--brown); }
+  .consent-scope .sig-row {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 6mm;
+  }
+  .consent-scope .legal-note {
+    font-family: var(--body);
+    font-size: 9pt;
+    line-height: 1.4;
+    color: var(--brown-60);
+    margin: 4mm 0 0;
+    font-style: italic;
+  }
+
+  /* ===== Combined doc additions ===== */
+  .cover-callout {
+    background: rgba(255, 181, 108, 0.16);
+    border-left: 3px solid var(--peach);
+    padding: 4mm 5mm;
+    max-width: 130mm;
+    margin: 7mm 0 0;
+  }
+  .cover-callout .cc-pill {
+    display: inline-block;
+    background: var(--peach);
+    color: var(--brown);
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 3px 9px 2px;
+    margin-bottom: 3mm;
+  }
+  .cover-callout p {
+    font-family: var(--body);
+    font-size: 10.5pt;
+    line-height: 1.4;
+    color: var(--brown);
+    margin: 0;
+  }
+  .cover-callout p strong { font-weight: 700; }
+
+  .sep-page { display: flex; align-items: center; justify-content: center; }
+  .sep-inner { text-align: center; max-width: 150mm; }
+  .sep-inner .logo-stack { width: 26mm; margin-bottom: 10mm; }
+  .sep-eyebrow {
+    font-family: var(--heading); font-weight: 500; font-size: 8pt;
+    letter-spacing: 0.32em; text-transform: uppercase; color: var(--brown-60); margin-bottom: 5mm;
+  }
+  .sep-title {
+    font-family: var(--heading); font-weight: 500; font-size: 28pt; line-height: 1.05;
+    letter-spacing: -0.02em; color: var(--brown); margin: 0 0 6mm;
+  }
+  .sep-sub {
+    font-family: var(--body); font-size: 12pt; line-height: 1.5; color: var(--brown);
+    margin: 0 auto; max-width: 120mm;
+  }
+  .sep-rule { width: 30mm; height: 3px; background: var(--sky-blue); margin: 10mm auto; }
+  .sep-foot {
+    font-family: var(--heading); font-weight: 500; font-size: 7.5pt;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--brown-60);
+  }
+
+  .print-bar { display: flex; gap: 8px; }
+  .print-bar .btn-clear { background: transparent; color: var(--brown); border: 1px solid var(--brown); }
+  .print-bar .btn-clear:hover { background: var(--brown-15); color: var(--brown); }
+
+</style>
+</head>
+<body>
+
+<div class="print-bar no-print">
+  <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  <button type="button" class="btn-clear" onclick="clearFields()">Clear fields</button>
+</div>
+
+<div class="page page-cover">
+  <header class="header-center">
+    <svg class="logo-stack" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="doc-meta">
+      <span class="pill">FMT patient manual</span>
+      Form FMT-ENE-01 <span class="sep"></span> v2026.1
+    </div>
+  </header>
+  <div class="cover-body">
+    <div>
+      <div class="cover-eyebrow">Patient Manual</div>
+      <h1>Faecal Microbiota Transplant</h1>
+      <h2>Enema Delivery</h2>
+    </div>
+    <div class="cover-fields">
+          <div class="field">
+            <label>Antibiotics Commence</label>
+            <div class="line"></div>
+          </div>
+          <div class="field">
+            <label>FMT Program Start Date</label>
+            <div class="line"></div>
+          </div>
+    </div>
+    <div class="cover-author">
+      <p class="name">Dr Paul Froomes</p>
+      <p class="role">MBBS, FRACP &nbsp;|&nbsp; Gastroenterologist<br>Chief Medical Officer, The Microbiome Clinic™</p>
+    </div>
+  </div>
+    <div class="cover-callout">
+      <span class="cc-pill">Action required</span>
+      <p><strong>Please complete the Consent &amp; Plain Language Explanation form</strong> included at the end of this manual. Read each statement, tick to confirm your understanding, and sign before your FMT appointment.</p>
+    </div>
+  <div class="cover-bottom">
+    <span>themicrobiomeclinic.com.au</span>
+    <span>© FitGut Pty Ltd 2025</span>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="title">FMT manual — enema</div>
+      <div>Form FMT-ENE-01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+  <section class="contents">
+    <h2 class="contents-title">Contents</h2>
+    <ol class="toc">
+      <li><span class="num">01</span><span class="label">Introduction to FMT</span></li>
+      <li><span class="num">02</span><span class="label">Diet Before FMT Treatment</span></li>
+      <li><span class="num">03</span><span class="label">Antibiotics Before FMT</span></li>
+      <li><span class="num">04</span><span class="label">Commencing FMT — Enema Delivery</span></li>
+      <li><span class="num">05</span><span class="label">FMT Home Enema Collection</span></li>
+      <li><span class="num">06</span><span class="label">Managing FMT Side Effects</span></li>
+      <li><span class="num">07</span><span class="label">Introducing Foods After FMT</span></li>
+      <li><span class="num">08</span><span class="label">Protecting Your New Microbiome</span></li>
+      <li><span class="num">09</span><span class="label">The Ideal Diet for Your New Microbiome</span></li>
+      <li class="extra"><span class="num">i</span><span class="label">Medical Disclaimer &amp; Important Safety Information</span></li>
+      <li class="extra"><span class="num">ii</span><span class="label">Contact Information</span></li>
+    </ol>
+  </section>
+    <div class="callout callout--warn">
+      <span class="label">Important — Please read before commencing</span>
+      <p>If you experience severe abdominal pain, persistent bleeding, high fever, or any symptoms of concern at any point during your FMT program, stop the program and contact your doctor immediately or attend your nearest hospital Emergency Department.</p>
+      <p>If you are pregnant, breastfeeding, or planning to become pregnant, consult Dr Froomes before commencing this program.</p>
+    </div>
+    <div class="callout callout--emergency">
+      <p>In a medical emergency, call 000 immediately.</p>
+    </div>
+</div>
+
+<div class="page">
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="title">FMT manual — enema</div>
+      <div>Form FMT-ENE-01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+  <section>
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>Introduction to FMT</h2>
+    </div>
+    <p>Faecal microbiota transplant (FMT) is a TGA-approved biological therapy. It involves harvesting the complete gut flora from a rigorously screened, healthy donor and transferring it into an approved candidate. The goal is to replace a disrupted, dysbiotic microbiome with a diverse, healthy microbial community.</p>
+    <p>Dr Froomes has been performing and refining FMT protocols for over two decades. His clinical experience, spanning thousands of microbiome consultations, has informed every aspect of this program — from donor selection criteria to the delivery method, timing, and post-transplant dietary guidance you will follow.</p>
+    <h3>What the Research Shows</h3>
+    <p>A substantial body of peer-reviewed research supports the use of FMT for <em>Clostridioides difficile</em> infection, where it has demonstrated high rates of clinical resolution. There is also a growing evidence base for its use in inflammatory bowel disease (IBD) and irritable bowel syndrome (IBS).</p>
+    <p>Emerging research has begun to explore the potential role of FMT in other conditions thought to be linked to gut microbiome disturbances, including autism spectrum disorders, depression, Parkinson's disease, multiple sclerosis, and autoimmune conditions. While these are areas of active investigation rather than established indications, Dr Froomes closely follows this literature and incorporates relevant findings into his clinical practice.</p>
+    <p>FMT is, in essence, a concentrated form of large-scale probiotic infusion. Rather than introducing a single strain or a small number of species, it provides the full ecological complexity of a healthy human gut microbiome — the bacteria, bacteriophages, and metabolites that work together to maintain gut barrier integrity, regulate immune function, and support overall health.</p>
+    <h3>How Your FMT Program Works</h3>
+    <p>Once you have elected to commence an FMT program, you will be given a personalised schedule and preparation instructions by the clinic's FMT nurse. This manual outlines everything you need to know to complete your course of FMT properly.</p>
+    <p>Depending on your clinical presentation, Dr Froomes may prescribe a course of antibiotics or herbal antimicrobials before your first transplant. The purpose of this preparatory phase is to suppress the populations of pathogenic bacteria that have overgrown your gut and are contributing to your symptoms. Once this is completed, the gut environment is optimally prepared to accept the new, healthy microbiota from the FMT. Not all patients require this step — the clinic nurse will advise you.</p>
+    <p>All of your FMTs will be self-administered by rectal enema at home. The enemas are designed to be straightforward and the clinic nurse will instruct you in the correct technique before you begin. No bowel preparation is required.</p>
+  </section>
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> reception@themicrobiomeclinic.com.au</div>
+    <div>Page 3 of 13</div>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="title">FMT manual — enema</div>
+      <div>Form FMT-ENE-01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+  <section>
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Diet Before FMT Treatment</h2>
+    </div>
+    <p>There is no specific diet you need to follow before having FMT.</p>
+    <p>Dr Froomes' clinical experience has shown that most patients with a compromised gut have already developed a restricted diet through years of trial and error. When patients with food sensitivities, gut inflammation, or chronic digestive conditions suddenly change their diets, it commonly triggers a flare-up of symptoms.</p>
+    <p>The priority in the lead-up to your FMT is gut stability. Dr Froomes does not want the gut irritated or inflamed before your transplant, as this may affect microbial uptake and implantation from the FMT.</p>
+    <div class="callout">
+      <span class="label">Key rule</span>
+      <p>Continue your current dietary restrictions until your FMT course is complete. Do not introduce new foods, remove food groups, or make significant dietary changes during this period.</p>
+    </div>
+    <div class="callout callout--warn">
+      <p>If you are on medication for your gut condition (e.g. ulcerative colitis, Crohn's disease) — <strong>do not</strong> stop your medication prior to or during FMT. Continue all prescribed medications unless Dr Froomes specifically instructs otherwise.</p>
+    </div>
+    <p>It is recommended that you continue your current dietary eating plan as normal prior to your first FMT and during the course of any antibiotics you have been instructed to take.</p>
+  </section>
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> reception@themicrobiomeclinic.com.au</div>
+    <div>Page 4 of 13</div>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="title">FMT manual — enema</div>
+      <div>Form FMT-ENE-01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+  <section>
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Antibiotics Before FMT</h2>
+    </div>
+    <p>Not all patients will be prescribed antibiotics before FMT. However, Dr Froomes may prescribe antibiotics or herbal antimicrobials prior to your transplant if your test results indicate that dysbiotic or pathogenic bacteria are contributing to your gut dysfunction.</p>
+    <p>The purpose of this preparatory treatment is to reduce the populations of harmful bacteria that would otherwise compete with the new probiotic flora for colonisation space in the colon. By clearing these organisms beforehand, the transplanted microbiota has a significantly better opportunity to implant and thrive.</p>
+    <h3>Practicalities</h3>
+    <ul class="brand-list">
+      <li>If antibiotics or herbal antimicrobials have been recommended, you will receive a prescription to fill at your local pharmacy, or the prescription may be sent to a compounding chemist.</li>
+      <li>The compounding chemist will either have the medication ready for collection or will send it to your home.</li>
+      <li>On the date given to you by the FMT nurse, commence taking the antibiotics or herbal antimicrobials according to the instructions on the bottles.</li>
+    </ul>
+    <div class="callout callout--warn">
+      <span class="label">Drug allergies</span>
+      <p>If you have any known drug allergies, please inform the clinic before commencing any prescribed antibiotics. Dr Froomes will prescribe suitable alternatives.</p>
+    </div>
+    <div class="callout callout--warn">
+      <span class="label">Alcohol warning</span>
+      <p>You must not drink alcohol at any time while taking these antibiotics. Alcohol interacts with certain antibiotics and can cause severe side effects. This restriction is absolute — no exceptions.</p>
+    </div>
+  </section>
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> reception@themicrobiomeclinic.com.au</div>
+    <div>Page 5 of 13</div>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="title">FMT manual — enema</div>
+      <div>Form FMT-ENE-01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+  <section>
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Commencing FMT — Enema Delivery</h2>
+    </div>
+    <p>Your FMT program will be delivered entirely via self-administered rectal enema at home. This approach has been used with excellent results both internationally and by many patients at The Microbiome Clinic™, and Dr Froomes supports this delivery method where clinically appropriate.</p>
+    <h3>Why Enema Delivery Works</h3>
+    <p>Enema-administered FMTs are highly effective at implanting the new, healthy microbiota throughout the lower and mid-colon. When performed correctly and consistently over the course of your program, enema delivery provides your gut with repeated doses of the donor microbiome, giving the transplanted bacteria multiple opportunities to establish, colonise, and outcompete any remaining pathogenic organisms.</p>
+    <p>Dr Froomes has refined the enema delivery protocol over many years of clinical practice to optimise microbial implantation and patient outcomes. The number and frequency of your enemas will be tailored to your specific clinical needs.</p>
+    <h3>What to Expect</h3>
+    <p>Before your first self-administered enema, the clinic nurse will:</p>
+    <ul class="brand-list">
+      <li>Demonstrate the correct enema technique in detail.</li>
+      <li>Provide your FMT enema kit with full written instructions.</li>
+      <li>Answer any questions about the self-administration process.</li>
+      <li>Confirm your enema schedule and frequency.</li>
+    </ul>
+    <p>Please do not attempt to self-administer an FMT enema until the nurse has instructed you in the correct technique. No bowel preparation is required for enema-delivered FMT.</p>
+    <div class="callout">
+      <span class="label">Timing tip</span>
+      <p>Most patients find it easiest to administer the enema in the evening before bed, allowing the transplanted material the longest possible contact time with the colonic lining overnight. The clinic nurse will confirm the optimal timing for your specific program.</p>
+    </div>
+  </section>
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> reception@themicrobiomeclinic.com.au</div>
+    <div>Page 6 of 13</div>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="title">FMT manual — enema</div>
+      <div>Form FMT-ENE-01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+  <section>
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2>FMT Home Enema Collection</h2>
+    </div>
+    <p>FMT enema kits can be collected from our consulting suites.</p>
+    <h3>Collection Address</h3>
+    <div class="contact-card">
+      <div class="item">
+        <label>Clinic</label>
+        <div class="value">The Microbiome Clinic™</div>
+      </div>
+      <div class="item">
+        <label>Email</label>
+        <div class="value">reception@themicrobiomeclinic.com.au</div>
+      </div>
+      <div class="item">
+        <label>Phone</label>
+        <div class="value">03 9007 2630</div>
+      </div>
+      <div class="item">
+        <label>Website</label>
+        <div class="value">themicrobiomeclinic.com.au</div>
+      </div>
+      <div class="item item--wide">
+        <label>Address</label>
+        <div class="value">Level 1, 8 Eddy Street, Moonee Ponds VIC 3039</div>
+      </div>
+      <div class="item item--wide">
+        <label>Collection Date &amp; Time</label>
+        <div class="value">____________________</div>
+      </div>
+    </div>
+    <p style="margin-top: 3mm;">At your collection appointment, the clinic nurse will:</p>
+    <ul class="brand-list">
+      <li>Provide your FMT enema kit with full written instructions.</li>
+      <li>Demonstrate the correct enema administration technique.</li>
+      <li>Answer any questions about the self-administration process.</li>
+      <li>Confirm your enema schedule and frequency.</li>
+    </ul>
+    <p>Please do not attempt to self-administer an FMT enema until the nurse has instructed you in the correct technique.</p>
+  </section>
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> reception@themicrobiomeclinic.com.au</div>
+    <div>Page 7 of 13</div>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="title">FMT manual — enema</div>
+      <div>Form FMT-ENE-01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+  <section>
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2>Managing FMT Side Effects</h2>
+    </div>
+    <p>Most patients tolerate FMT well. However, as your gut microbiome undergoes significant change, you may experience temporary side effects. If any of the following symptoms occur during your FMT treatment, you can manage them using the medications listed below.</p>
+    <p>Take these medications as directed on the container, but please also notify the clinic so that we are aware and can assist if symptoms persist.</p>
+    <div class="callout callout--warn">
+      <span class="label">Important — Continue all medications</span>
+      <p>FMT can sometimes temporarily flare up symptoms, particularly in patients with inflammatory bowel conditions such as colitis. This is why Dr Froomes asks you to continue taking all prescribed medications throughout the FMT process.</p>
+    </div>
+    <table class="brand-table">
+      <thead>
+        <tr><th>Symptom</th><th>Medication</th><th>Script Required</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Bloating</td><td>Iberogast</td><td>No</td></tr>
+        <tr><td>Cramping</td><td>Buscopan Forte</td><td>No</td></tr>
+        <tr><td>Diarrhoea</td><td>Gastrostop or Lomotil</td><td>No / Yes</td></tr>
+        <tr><td>Constipation</td><td>Coloxyl with Senna (3 tabs) or Colozone (1 tsp in warm water). Contact us if persists.</td><td>No</td></tr>
+        <tr><td>Nausea</td><td>Ginger tea or ginger tablets</td><td>No</td></tr>
+        <tr><td>Nausea with vomiting</td><td>Maxalon 10 mg tablets or Zofran 8 mg wafers</td><td>Yes</td></tr>
+        <tr><td>Reflux or heartburn</td><td>Gaviscon or Mylanta</td><td>No</td></tr>
+        <tr><td>Flatulence</td><td>Activated charcoal tablets</td><td>No</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout--warn">
+      <p>If side effects are severe, persistent, or worsening, <strong>stop the FMT program and contact the clinic immediately.</strong> In a medical emergency, call 000.</p>
+    </div>
+  </section>
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> reception@themicrobiomeclinic.com.au</div>
+    <div>Page 8 of 13</div>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="title">FMT manual — enema</div>
+      <div>Form FMT-ENE-01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+  <section>
+    <div class="section-head">
+      <span class="section-num">07</span>
+      <h2>Introducing Foods After FMT</h2>
+    </div>
+    <p>The aim of your FMT is to reset your gut microbiome and recolonise your gut with a complete, diverse, and healthy balance of beneficial bacteria. In order to support the recolonisation process, it is important that you continue to nourish the new bacteria as they establish themselves in your colon.</p>
+    <p>Your transplanted microbiome requires a steady source of fibre, resistant starch, and diverse plant matter to permanently establish itself. Think of it as terraforming — the new bacteria need the right environment and the right fuel to thrive long-term. They will also benefit from occasional FMT top-up treatments from time to time, as advised by Dr Froomes.</p>
+    <h3>The First Two Weeks</h3>
+    <p>As a general rule, in the first two weeks after your FMT course it is best to stick to your current familiar diet. Continue to eat foods you know you can tolerate and avoid known trigger foods. Although we anticipate an improvement in your food sensitivities, this may not happen immediately, and dietary stability supports microbial implantation during this critical early period.</p>
+    <h3>Introducing New Foods</h3>
+    <p>Once your gut begins to settle — which for some patients may happen during the FMT program itself and for others in the days following — you can begin to trial new foods using a gradual, structured approach:</p>
+    <ol class="brand-list">
+      <li><strong>Start small.</strong> Begin with approximately one teaspoon of a new food and trial only one new food at a time.</li>
+      <li><strong>Be patient.</strong> Your new gut bacteria will be working to help your gut tolerate a wider range of foods than it currently does. If you feel unsettled by a new food initially, don't give up.</li>
+      <li><strong>Build gradually.</strong> Keep adding small amounts of new foods to your existing meals. It takes repeated exposure and gentle desensitisation for your gut to adapt to increased dietary diversity.</li>
+      <li><strong>Listen to your body.</strong> If a food consistently causes significant symptoms after several attempts, set it aside and try again in a few weeks.</li>
+    </ol>
+    <p>The goal is a progressively expanding diet over weeks and months — not an overnight transformation. Dr Froomes' clinical experience has shown that patients who take a steady, patient approach to food reintroduction achieve the best long-term outcomes.</p>
+  </section>
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> reception@themicrobiomeclinic.com.au</div>
+    <div>Page 9 of 13</div>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="title">FMT manual — enema</div>
+      <div>Form FMT-ENE-01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+  <section>
+    <div class="section-head">
+      <span class="section-num">08</span>
+      <h2>Protecting Your New Microbiome</h2>
+    </div>
+    <p>You now have a new, healthy microbiome establishing itself in your gut. These transplanted bacteria are beneficial but delicate — particularly in the early weeks after your FMT. It is critical that you avoid substances and behaviours known to damage or kill probiotic gut bacteria.</p>
+    <p>Dr Froomes asks all FMT patients to follow these rules carefully to protect the investment you have made in your microbial health.</p>
+    <h3>What to Avoid</h3>
+    <ul class="brand-list">
+      <li><strong>Trans fats and seed oils</strong> — No margarines, shortening, mayonnaise, or vegetable oils (sunflower, soybean, canola, rice bran, grapeseed). These damage the gut lining and are harmful to probiotic bacteria. Use extra virgin olive oil, avocado oil, or butter instead.</li>
+      <li><strong>Refined white starches</strong> — No white bread, white rice, white potato, pastry, wheat-based cereal, or white pasta. Choose whole grain, unprocessed alternatives.</li>
+      <li><strong>Sugar and artificial sweeteners</strong> — No sweets, lollies, soft drinks, packaged desserts, or artificial sweeteners (aspartame, sucralose, saccharin). These feed pathogenic bacteria and disrupt microbial diversity.</li>
+      <li><strong>Processed and packaged foods</strong> — Avoid foods in packets, cans, or jars wherever possible. Preservatives, emulsifiers, and chemical additives damage the gut lining and kill beneficial bacteria.</li>
+      <li><strong>Antiseptic mouthwash</strong> — Do not use antiseptic or antibacterial mouthwash. These products kill beneficial oral bacteria that contribute to overall microbiome health.</li>
+      <li><strong>Alcohol</strong> — No alcohol for a minimum of two weeks after your final FMT. After this period, wine or beer in small amounts only. Spirits and excessive consumption are strongly discouraged long-term.</li>
+      <li><strong>Overseas travel (high-risk regions)</strong> — Avoid travel to regions with high risk of traveller's diarrhoea and parasitic infections for at least one month after your final FMT. Consult the clinic before any international travel during your program.</li>
+      <li><strong>Antibiotics</strong> — Do not take any antibiotics unless specifically approved by Dr Froomes. If another doctor prescribes antibiotics for an unrelated condition, contact the clinic before commencing so Dr Froomes can advise on how to protect your new microbiome.</li>
+      <li><strong>Smoking and vaping</strong> — Both damage mucosal barriers and reduce microbial diversity. Avoid throughout your program and beyond.</li>
+    </ul>
+  </section>
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> reception@themicrobiomeclinic.com.au</div>
+    <div>Page 10 of 13</div>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="title">FMT manual — enema</div>
+      <div>Form FMT-ENE-01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+  <section>
+    <div class="section-head">
+      <span class="section-num">09</span>
+      <h2>The Ideal Diet for Your New Microbiome</h2>
+    </div>
+    <p>The ideal diet to nurture your new transplanted microbiome is a wholefood, predominantly plant-based diet with moderate amounts of line-caught fish, free-range chicken, and grass-fed meat. This dietary approach provides the fibre, resistant starch, and diverse plant compounds that your new probiotic bacteria need to permanently colonise and flourish.</p>
+    <div class="callout">
+      <p>You may still have food sensitivities even after FMT. Please continue to avoid any food that causes gut symptoms or a physical reaction. The food reintroduction guidance in Section 7 applies — expand your diet gradually, not all at once.</p>
+    </div>
+    <h3>Practical Tips</h3>
+    <ul class="brand-list">
+      <li>Wash raw foods in water or peel them before consuming to remove pesticide residues.</li>
+      <li>Choose organic, grass-fed meat and free-range chicken where possible to avoid antibiotic residues.</li>
+      <li>Choose from the lists below based on what you know you can tolerate — you do not need to eat everything listed.</li>
+      <li>Pick a few items from each category to eat daily to feed and sustain your new microbiome.</li>
+    </ul>
+    <h3>Daily Food Categories — Plant Foundations</h3>
+    <p><strong>1. Green Vegetables.</strong> <em>Serve with extra virgin olive oil and vinegar at each meal.</em> Asparagus, bean sprouts, beet greens, celery, cucumber, endive, cos lettuce, red oak lettuce, butter lettuce, radicchio, rocket, mustard greens, radishes, watercress, Swiss chard, kale, Brussels sprouts, collard greens.</p>
+    <p><strong>2. Cruciferous and Coloured Vegetables.</strong> <em>Mix with red, yellow, and orange vegetables for diversity.</em> Broccoli, cabbage, broccolini, cauliflower, capsicum (red, yellow, green), squash, carrot, eggplant, purple cabbage, turnips, spring onion.</p>
+    <p><strong>3. Healthy Carbohydrates.</strong> Gluten-free or paleo muesli, quinoa, amaranth, buckwheat, brown rice, Doongara (low GI) rice, beans (any type), peas, sweet potato, activated almonds, spelt, pumpkin seeds, oats. Choose gluten-free options where possible.</p>
+    <p><strong>4. Fruit, Berries and Yoghurt.</strong> <em>Serve with live-culture yoghurt or kefir.</em> Apricot, avocado, blackberries, blueberries, grapefruit, loganberries, nectarines, olives, papaya, peach, plum, raspberries, strawberries. Apple or pear if you are not fructose intolerant.</p>
+  </section>
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> reception@themicrobiomeclinic.com.au</div>
+    <div>Page 11 of 13</div>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="title">FMT manual — enema</div>
+      <div>Form FMT-ENE-01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+  <section>
+    <div class="section-head">
+      <span class="section-num">09</span>
+      <h2>The Ideal Diet — continued</h2>
+    </div>
+    <h3>Daily Food Categories — Protein &amp; Broths</h3>
+    <p><strong>5. Fish.</strong> Eat a serve of line-caught fish occasionally. Oily fish (salmon, sardines, mackerel) are particularly beneficial for their anti-inflammatory omega-3 content.</p>
+    <p><strong>6. Meat and Poultry.</strong> Eat a serve of free-range chicken or grass-fed meat occasionally. Meat should be a complement to your plant-based meals, not the centrepiece.</p>
+    <p><strong>7. Bone Broth.</strong> Drink one cup of bone broth daily if you can tolerate it. Bone broth provides collagen, glutamine, and minerals that may support gut lining integrity.</p>
+    <h3>Further Reading</h3>
+    <p><em>For those interested in reading more about the role of gut bacteria in health and disease, Dr Froomes' book</em> <strong>Gut Reloaded</strong> <em>provides a comprehensive and accessible guide. Available from the clinic or online at <a href="https://poseidonbooks.com.au" style="color: var(--dark-blue);">poseidonbooks.com.au</a>.</em></p>
+  </section>
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> reception@themicrobiomeclinic.com.au</div>
+    <div>Page 12 of 13</div>
+  </div>
+</div>
+
+<div class="page">
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="title">FMT manual — enema</div>
+      <div>Form FMT-ENE-01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+  <section>
+    <div class="section-head">
+      <span class="section-num">i</span>
+      <h2>Medical Disclaimer &amp; Important Safety Information</h2>
+    </div>
+    <p>This patient manual is provided by The Microbiome Clinic™ (operated by FitGut Pty Ltd) as a supplement to, and not a replacement for, the personalised medical advice provided by your treating physician, Dr Paul Froomes.</p>
+    <p>The information contained in this manual is intended for general informational purposes and should not be relied upon as a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your qualified healthcare provider with any questions you may have regarding a medical condition.</p>
+    <p>Faecal microbiota transplant (FMT) is a TGA-approved biological therapy. The specific FMT protocol described in this manual has been designed by Dr Paul Froomes based on available clinical evidence, peer-reviewed research, and his professional experience spanning over 30 years of gastroenterological practice. Individual responses to FMT may vary. While the evidence base for FMT continues to grow, outcomes cannot be guaranteed for any individual patient.</p>
+    <p>The medications listed in Section 6 for managing side effects are general suggestions. Always read the label and follow the directions for use. If symptoms persist, consult your healthcare professional.</p>
+    <div class="callout callout--warn">
+      <span class="label">Pregnancy and breastfeeding</span>
+      <p>If you are pregnant, breastfeeding, or planning to become pregnant, consult Dr Froomes before commencing or continuing this program. FMT and associated antibiotics may not be suitable during pregnancy or lactation.</p>
+    </div>
+    <div class="callout callout--warn">
+      <span class="label">Side effects</span>
+      <p>If you experience any adverse reactions, severe side effects, or symptoms of concern at any time during your FMT program, stop the program and consult your Doctor immediately.</p>
+    </div>
+    <div class="callout callout--emergency">
+      <p>In a medical emergency, call 000 immediately.</p>
+    </div>
+  </section>
+  <section>
+    <div class="section-head">
+      <span class="section-num">ii</span>
+      <h2>Contact Information</h2>
+    </div>
+    <div class="contact-card">
+      <div class="item">
+        <label>Clinic</label>
+        <div class="value">The Microbiome Clinic™</div>
+      </div>
+      <div class="item">
+        <label>Email</label>
+        <div class="value">reception@themicrobiomeclinic.com.au</div>
+      </div>
+      <div class="item">
+        <label>Phone</label>
+        <div class="value">03 9007 2630</div>
+      </div>
+      <div class="item">
+        <label>Website</label>
+        <div class="value">themicrobiomeclinic.com.au</div>
+      </div>
+      <div class="item item--wide">
+        <label>Address</label>
+        <div class="value">Level 1, 8 Eddy Street, Moonee Ponds VIC 3039</div>
+      </div>
+    </div>
+    <p style="margin-top: 4mm; font-size: 9pt; color: var(--brown-60);">© Copyright 2025. FitGut Pty Ltd. All rights reserved. You are not permitted to reproduce any information from this manual for the purposes of sale or use by any third party.</p>
+  </section>
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> reception@themicrobiomeclinic.com.au</div>
+    <div>Page 13 of 13</div>
+  </div>
+</div>
+
+<div class="page sep-page">
+  <div class="sep-inner">
+    <svg class="logo-stack" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="sep-eyebrow">Section 2</div>
+    <h1 class="sep-title">Consent &amp; Plain Language Explanation</h1>
+    <p class="sep-sub">Please read the following section carefully, tick each statement to confirm your understanding, and sign where indicated. Bring the completed consent form to your appointment.</p>
+    <div class="sep-rule"></div>
+    <div class="sep-foot">The Microbiome Clinic&trade; &nbsp;·&nbsp; themicrobiomeclinic.com.au</div>
+  </div>
+</div>
+
+<div class="consent-scope">
+<!-- ================= PAGE 1 ================= -->
+<div class="page">
+
+  <header class="header-center">
+    <svg class="logo-stack" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="doc-meta">
+      <span class="pill">FMT consent form</span>
+      Form FMT-C01 <span class="sep"></span> v2026.1
+    </div>
+  </header>
+
+  <div class="title-block">
+    <h1>Consent &amp; plain language explanation of faecal microbiota transplantation</h1>
+    <p class="subtitle">Permission to provide FMT for restoration of the gut microbiome</p>
+    <p class="intro">
+      FMT therapy will be explained to you by your treating specialist and/or our practice nurse. Whether or not you accept treatment is up to you. You can agree to take part now and change your mind later. Whatever you decide, this will <em>not</em> be held against you. Please feel free to ask all the questions you want before you make a decision.
+    </p>
+  </div>
+
+  <div class="id-strip">
+    <div class="field" style="grid-column: 1 / -1;"><label>Patient surname</label><input type="text" class="line"></div>
+    <div class="field" style="grid-column: 1 / 3;"><label>Given name</label><input type="text" class="line"></div>
+    <div class="field"><label>Sex</label><input type="text" class="line"></div>
+    <div class="field"><label>Date of birth</label><input type="text" class="line"></div>
+    <div class="field"><label>Date</label><input type="text" class="line"></div>
+  </div>
+
+  <section>
+    <div class="section-head"><span class="section-num">01</span><h2>Background information</h2></div>
+    <p class="body-text">The human bowel contains a complex population of bacteria comprising several hundred different species. The colon itself is densely populated with around 500 species and over 30,000 subspecies of commensal bacteria. These organisms and the chemicals they produce affect the body and can have both positive and negative impacts on health. The human flora protects us from bad bacteria; however, if a harmful bacterium implants itself into the population of normal healthy good bacteria, it can have a debilitating and sometimes toxic effect on our health. Due to the nature of these bacteria, which are able to produce spores and biofilms, it is difficult to remove the infection, which can remain for many years &mdash; even a lifetime.</p>
+    <p class="body-text">It is now believed that several gastrointestinal conditions such as Irritable Bowel Syndrome (IBS) and Inflammatory Bowel Disease (IBD) may be the result of an imbalance of the normal bowel flora. FMT has been used since 1958 to treat a severe bowel infection called <em>Clostridium difficile</em> infection (CDI) and has been found to be safe and highly effective. Over 200 medical centres worldwide now treat patients diagnosed with CDI using FMT, with a global cure rate of over 95% &mdash; compared with only 20% cure using the antibiotic Vancomycin.</p>
+    <p class="body-text">FMT has also been researched and found to be safe and effective for treating patients with Ulcerative Colitis (UC) and Crohn&rsquo;s Disease (CD) that is unresponsive to standard therapy. There are over 42 published medical research studies proving FMT is safe and effective in treating Ulcerative Colitis, and 14 studies for Crohn&rsquo;s Disease. Studies in Crohn&rsquo;s and Ulcerative Colitis have shown 40&ndash;50% steroid-free remission rates with an excellent safety profile. Multiple studies also show FMT is safe and effective in treating Irritable Bowel Syndrome.</p>
+  </section>
+
+
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> themicrobiomeclinic.com.au</div>
+    <div>Page 1 of 7 <span class="mono-dot"></span> continued overleaf</div>
+  </div>
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="page">
+
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="continued">FMT consent &amp; plain language explanation <span style="color: var(--brown-60);">— continued</span></div>
+      <div>Form FMT-C01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head"><span class="section-num">02</span><h2>Why we are offering FMT</h2></div>
+    <p class="body-text">There are many conventional treatments you may have already tried for your current illness, prescribed by your referring doctor and/or specialist. These may include antibiotics in the case of <em>C. difficile</em> infection; antispasmodics, laxatives, antidiarrhoeals, probiotics, FODMAP diets, antidepressants or hypnosis in functional gut disorders such as IBS; or immunosuppressant drugs such as Mesalazine, Sulphasalazine, steroids, Imuran, Mercaptopurine, Humira, Infliximab, Methotrexate, Stelara and Vedolizumab in the case of inflammatory bowel disease. Having either failed or had to stop these drugs due to side effects, you have been referred to consider a trial of Faecal Microbiota Transplant therapy (FMT).</p>
+    <p class="body-text">The aim of FMT is to restore a healthy population of vital human gut bacteria inside your bowel (a healthy gut microbiome). FMT appears to be the most complete probiotic treatment available today, supplying the largest number of good probiotic bacteria for re-colonisation of the bowel of any treatment possible. The good bacteria from FMT can assist with eradicating bad or dysbiotic bacteria and replacing them with the right probiotic bacteria &mdash; which is how FMT helps treat illnesses thought to be due to a weak or unhealthy gut microbiome.</p>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">03</span><h2>What is involved in FMT?</h2></div>
+    <p class="body-text">Before starting FMT you may be required to undergo pre-FMT screening tests on blood and stool to exclude other infections, or to establish a baseline status of your microbiome and medical condition. You will be required to undergo some preparation steps in the lead-up to FMT, which may involve the use of antibiotics, dietary changes and bowel preparation. This prepares your bowel for the procedure, aids elimination of unwanted bacteria, and maximises the effectiveness of treatment.</p>
+    <p class="body-text">FMT involves administration of specially prepared healthy human donor stool (faecal matter) into the gastrointestinal tract, reinstating healthy faecal microbiota in the colon. FMT can be offered using different routes of administration &mdash; upper or lower gastrointestinal &mdash; with nearly similar success rates.</p>
+    <div class="callout">
+      <strong>TGA approval.</strong> FMT therapy has been approved in Australia as a Class 1 Biological Therapy by the Therapeutic Goods Administration (TGA). This means FMT is permitted as a treatment, but only by doctors who are specialists in Gastroenterology or Infectious Diseases with the Royal Australasian College of Physicians, and who have undergone full TGA accreditation. Your treating gastroenterologist is accredited to manufacture and use FMT by the TGA of Australia.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">04</span><h2>How long is treatment, &amp; how will I receive it?</h2></div>
+    <p class="body-text">You will receive a predetermined number of FMT treatments administered once daily. If treatment is not successful in clearing the infection or illness, you will have the option to receive another course of FMT following appropriate conventional medical therapy. FMT will be provided by one of the following predetermined routes:</p>
+    <div class="routes">
+      <div class="route"><div class="label">Gastroscopy</div><div class="desc">Instilled into the duodenum</div></div>
+      <div class="route"><div class="label">Rectal enema</div><div class="desc">Via a small catheter</div></div>
+      <div class="route"><div class="label">Colonoscopy</div><div class="desc">Or sigmoidoscopy</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">05</span><h2>What are the expectations of me?</h2></div>
+    <p class="body-text">If you wish to receive FMT, we expect that you will:</p>
+    <ul class="bullets">
+      <li>Keep your appointments. If you cannot keep an appointment, contact the office staff to reschedule as soon as you know you will miss it.</li>
+      <li>Tell your treating doctor, GP or nurse about any side effects, doctor visits, or hospitalisation you may have &mdash; whether or not you think they are related to the therapy.</li>
+    </ul>
+  </section>
+
+
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> themicrobiomeclinic.com.au</div>
+    <div>Page 2 of 7 <span class="mono-dot"></span> continued overleaf</div>
+  </div>
+</div>
+
+<!-- ================= PAGE 3 ================= -->
+<div class="page">
+
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="continued">FMT consent &amp; plain language explanation <span style="color: var(--brown-60);">— continued</span></div>
+      <div>Form FMT-C01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head"><span class="section-num">06</span><h2>Donor testing</h2></div>
+    <p class="body-text">For FMT, stool from a healthy person/donor is used. A healthy person is defined as someone who has no history of any bowel problems, medical problems or diseases, who has regular normal bowel movements, and who has no illnesses &mdash; mental or physical &mdash; that may be associated with gut flora (e.g. diabetes, depression, autoimmune disease, obesity, heart disease). Donors are required to undergo a rigorous screening process according to TGA regulations on a regular basis, including extensive blood and stool testing for all detectable, known pathogens and diseases. Our FMT program meets all TGA requirements that exist for this donor product.</p>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">07</span><h2>Could receiving FMT be bad for me?</h2></div>
+    <p class="body-text">Whilst FMT is generally considered a safe procedure with an excellent safety profile, stool is a donor product. Although risks associated with FMT are mitigated through strict adherence to standards, guidelines and infection-control precautions, they are not totally eliminated. Risks include:</p>
+    <ul class="bullets">
+      <li><strong>Donor screening.</strong> The donor may have an unknown disease or infection not found at screening, and the patient may be exposed after contact with the donor sample. All donors undergo extensive screening prior to stool collection to prevent exposure to a known infectious disease. Although extremely rare, such a risk cannot be completely eliminated.</li>
+      <li><strong>FMT.</strong> Donor stool may cause symptoms such as (but not limited to) diarrhoea, abdominal pain, bloating, cramping, wind, or an urge to have a bowel movement, which should only last a short period.</li>
+      <li><strong>Enema.</strong> Not painful but can be uncomfortable. We will provide privacy and make the procedure as comfortable as possible. Mild rectal bleeding can occur after an enema, as well as an urge to empty the bowels.</li>
+      <li><strong>Colonoscopy / sigmoidoscopy.</strong> These involve putting a flexible endoscope into your large intestine; consent is obtained separately. Specific risks include damage to the bowel lining or bowel perforation (rare; risk 1 in 2,000), abdominal pain, bowel bleeding and infection. Sedation may be needed, although flexible sigmoidoscopy is typically done without sedation in adults.</li>
+    </ul>
+    <p class="body-text"><span class="lead">Unknown risks.</span> In addition to the above, this treatment may harm you in ways that are unknown. Complications may include, but are not limited to:</p>
+    <ul class="bullets">
+      <li>Transmission of infectious organisms (bacterial, viral, fungal, parasitic) contained in the stool.</li>
+      <li>Missed polyp, cancer or other lesion (infusing donor stool interferes with visualisation of colonic mucosa).</li>
+      <li>Allergic reaction to antigens in donor stool.</li>
+      <li>Enhanced colitis activity in patients with underlying inflammatory bowel disease.</li>
+      <li>Theoretical increased risk of developing disease related to donor gut bacteria or other microorganisms (obesity/metabolic syndrome, autoimmune, allergic/atopic, neurologic disorders, malignancy). Donors are, however, screened for these conditions.</li>
+    </ul>
+    <div class="callout">
+      <strong>Pregnancy &amp; birth control.</strong> If you think you are or may become pregnant during treatment, you must inform the clinic right away, as there may be risks to you or your baby. Because the risks to embryo/foetus/unborn babies and breastfeeding babies may not be known or foreseeable, pregnant women and nursing mothers are not permitted to receive FMT. If you are a woman who can become pregnant, you should not become pregnant during this treatment.
+    </div>
+    <p class="body-text" style="margin-bottom:0;">This is <em>not</em> a complete list, and there may be unforeseen risks that cannot be anticipated at this time.</p>
+  </section>
+
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> themicrobiomeclinic.com.au</div>
+    <div>Page 3 of 7 <span class="mono-dot"></span> continued overleaf</div>
+  </div>
+</div>
+
+<!-- ================= PAGE 4 ================= -->
+<div class="page">
+
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="continued">FMT consent &amp; plain language explanation <span style="color: var(--brown-60);">— continued</span></div>
+      <div>Form FMT-C01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head"><span class="section-num">08</span><h2>Costs, privacy &amp; outcomes</h2></div>
+    <p class="body-text"><span class="lead">Will I need to pay?</span> As this is a medical treatment and not a research study, no funds have been set aside to provide FMT. Appropriate procedures, including FMT, will be billed to you and/or your insurer where appropriate. You will <em>not</em> be billed for donor screening.</p>
+    <p class="body-text"><span class="lead">Personal information.</span> This is clinical care provided to treat your condition, not a research study. We will not collect any information other than what is required to treat your medical condition. Under the <em>Health Records Act 2001</em> (Vic), you are able to request access to your medical record. Should you wish to make such a request, please do so in writing.</p>
+    <p class="body-text"><span class="lead">Injury or illness.</span> No funds have been set aside to pay you in the event of an FMT-related injury or sickness. If injury or illness results from this treatment, medical care and/or hospitalisation will be provided but will not be free of charge. By signing this consent form you will not be waiving any legal rights you otherwise would have.</p>
+    <p class="body-text"><span class="lead">Results.</span> Results can vary with FMT, and we are unable to refund the cost of your treatment. Please contact us to discuss your options if you have reacted negatively or an issue has arisen during treatment.</p>
+  </section>
+
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> themicrobiomeclinic.com.au</div>
+    <div>Page 4 of 7 <span class="mono-dot"></span> continued overleaf</div>
+  </div>
+</div>
+
+<!-- ================= PAGE 5 ================= -->
+<div class="page">
+
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="continued">FMT consent &amp; plain language explanation <span style="color: var(--brown-60);">— continued</span></div>
+      <div>Form FMT-C01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head"><span class="section-num">09</span><h2>Consent for faecal microbiota transplant (FMT)</h2></div>
+    <p class="body-text">Please read each statement below carefully and tick the box to confirm your understanding and agreement.</p>
+    <div class="consent-list">
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I authorise FMT to be administered by my treating specialist via colonoscopy, gastroscopy or rectal enema. The specialist&rsquo;s nurse, or I myself, may self-administer FMT via enema under supervision by the above named.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I understand that the FMT enema will be administered via a small catheter into the colon. The FMT will consist of healthy bacterial flora contained in stool collected from a suitable donor.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>The nature, purpose, risks and benefits of this procedure have been discussed with me and I have read the plain language explanation.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I understand that assistants designated by my physician may participate in the procedure and that there may be other observers or staff present.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I understand that donors are screened and undergo intensive TGA-approved screening for many common communicable diseases to ensure the procedure is done as safely as possible, but that it is not possible to test donors for all possible organisms and some infections may be undetectable.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I understand that alternative and conventional treatments for my condition &mdash; including antibiotics, drug therapy, surgery, or no treatment at all &mdash; and the risks and benefits of all treatments I have already tried have been explained to me and have failed to control my condition.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I have discussed alternative treatments with my treating specialist, General Practitioner or other health care professional and I understand the risks and benefits of alternative treatment.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I understand my condition could improve, worsen, or stay the same with each alternative treatment, including FMT.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I understand that at present the cumulative experience with FMT is extensive for the treatment of <em>Clostridium difficile</em> infection, but there is less research proving the benefit of FMT in other conditions. While FMT is considered conventional standard of care for <em>C. difficile</em> infection and is becoming more widely accepted for ulcerative colitis, Crohn&rsquo;s disease and irritable bowel syndrome, it is still considered by many to be investigational for other illnesses. The evidence base is continually mounting, and I have been made aware of the current research supporting use of FMT in my condition.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I understand that current medical literature reports that &ldquo;FMT is generally considered safe and well-tolerated &mdash; even in high-risk patients. Most short-term risks are mild and known to be associated with delivery methods. Long-term side effects have not been established, and no signs of harm have been found to date.&rdquo; <span class="cite">Park SY, Seo GS. Fecal Microbiota Transplantation: Is It Safe? Clin Endosc. 2021;54(2):157&ndash;160.</span></p></div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> themicrobiomeclinic.com.au</div>
+    <div>Page 5 of 7 <span class="mono-dot"></span> continued overleaf</div>
+  </div>
+</div>
+
+<!-- ================= PAGE 6 ================= -->
+<div class="page">
+
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="continued">FMT consent &amp; plain language explanation <span style="color: var(--brown-60);">— continued</span></div>
+      <div>Form FMT-C01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head"><span class="section-num">09</span><h2>Consent for FMT <span class="section-cont">continued</span></h2></div>
+    <p class="body-text">The risks of FMT treatment have been discussed with me and I understand complications can or may arise. These may include, but are not limited to:</p>
+    <ul class="bullets">
+      <li>Transmission of infectious organisms contained in the stool.</li>
+      <li>Allergic reactions to any component of the donor stool.</li>
+      <li>Temporary bloating, wind, cramps, and changes in stool frequency, consistency and odour.</li>
+      <li>Temporary flare-up of my underlying illness, including inflammatory bowel symptoms or irritable bowel syndrome.</li>
+      <li>Gaseousness, diarrhoea, constipation, abdominal pain or tenderness.</li>
+      <li>Fever, nausea, belching, rectal bleeding.</li>
+      <li>Bowel perforation from colonoscopy (risk 1 in 2,000).</li>
+    </ul>
+    <div class="consent-list">
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I understand the above is not a complete list of potential complications and that unforeseen risks not discussed with me may exist.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I understand that, just like other medical therapies, faecal transplant may not be successful.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I understand that complications or new diseases, although not reported so far in the medical literature, may arise as a result of a faecal transplant.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I understand that the above, as well as other complications, sometimes require additional procedures or treatments, and they have been discussed with me. I consent to such additional procedures which my physician deems necessary.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I am aware that the practice of medicine is not an exact science. I acknowledge that no guarantee or promise has been given to me by anyone as to the results of my treatment.</p></div>
+      <div class="consent-item"><input type="checkbox" class="tick"><p>I acknowledge that this form has been explained to me and I understand its contents. I have read the plain language explanation of FMT therapy, have had the opportunity to ask questions, and all of my questions have been answered to my satisfaction.</p></div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> themicrobiomeclinic.com.au</div>
+    <div>Page 6 of 7 <span class="mono-dot"></span> continued overleaf</div>
+  </div>
+</div>
+
+
+<!-- ================= PAGE 7 ================= -->
+<div class="page">
+
+  <header class="header-slim">
+    <svg class="logo-mini" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="meta">
+      <div class="continued">FMT consent &amp; plain language explanation <span style="color: var(--brown-60);">— continued</span></div>
+      <div>Form FMT-C01 &nbsp;·&nbsp; v2026.1</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head"><span class="section-num">10</span><h2>Signatures</h2></div>
+    <p class="body-text">By signing below, the patient confirms they have read and understood this consent form and the plain language explanation of FMT therapy, and consent to treatment.</p>
+  </section>
+
+  <div class="auth-box">
+    <h3>Patient consent</h3>
+    <div class="sig-field"><label>Patient name (printed)</label><input type="text" class="line"></div>
+    <div class="sig-row">
+      <div class="sig-field"><label>Signature</label><input type="text" class="line"></div>
+      <div class="sig-field"><label>Date</label><input type="text" class="line"></div>
+    </div>
+  </div>
+
+  <div class="auth-box">
+    <h3>Provider&rsquo;s acknowledgement</h3>
+    <p class="auth-statement">I confirm that I have fully explained to the above patient the nature and purpose of faecal microbiota transplant and the possible risks and benefits associated.</p>
+    <div class="sig-field"><label>Provider name (printed)</label><input type="text" class="line"></div>
+    <div class="sig-row">
+      <div class="sig-field"><label>Signature</label><input type="text" class="line"></div>
+      <div class="sig-field"><label>Date</label><input type="text" class="line"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> themicrobiomeclinic.com.au</div>
+    <div>Page 7 of 7</div>
+  </div>
+</div>
+</div>
+
+<script>
+  function clearFields() {
+    if (!confirm('Clear all entered text on this form?')) return;
+    document.querySelectorAll('input[type="text"], textarea').forEach(function (el) { el.value = ''; });
+    document.querySelectorAll('input[type="checkbox"]').forEach(function (el) { el.checked = false; });
+    document.querySelectorAll('[contenteditable="true"]').forEach(function (el) { el.textContent = ''; });
+  }
+</script>
+</body>
+</html>
