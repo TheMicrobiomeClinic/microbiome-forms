@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Probiotic Enema Travel Letter · The Microbiome Clinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Brand tokens ---------- */
+  :root {
+    --sky-blue:  #7EC2F1;
+    --peach:     #FFB56C;
+    --dark-blue: #316A9C;
+    --brown:     #5D5A49;
+    --cream:     #FFFEF0;
+    --brown-60:  rgba(93, 90, 73, 0.60);
+    --brown-30:  rgba(93, 90, 73, 0.30);
+    --brown-15:  rgba(93, 90, 73, 0.15);
+
+    --heading:   'General Sans', 'Helvetica Neue', Arial, sans-serif;
+    --body:      'Crimson Pro', 'Georgia', serif;
+  }
+
+  /* ---------- Reset / base ---------- */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--body);
+    color: var(--brown);
+    background: #e9e6d6;
+    font-size: 11pt;
+    line-height: 1.35;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ---------- A4 page ---------- */
+  .page {
+    width: 210mm;
+    min-height: 290mm;
+    margin: 16px auto;
+    background: var(--cream);
+    padding: 15mm 18mm 22mm;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  /* ---------- Page 1 header ---------- */
+  .header-center {
+    text-align: center;
+    padding-bottom: 6mm;
+    border-bottom: 1px solid var(--brown-30);
+    margin-bottom: 6mm;
+  }
+  .logo-stack { width: 22mm; height: auto; display: inline-block; }
+  .doc-meta {
+    margin-top: 4mm;
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7.5pt;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+  }
+  .doc-meta .pill {
+    display: inline-block;
+    background: var(--sky-blue);
+    color: var(--cream);
+    padding: 4px 10px 3px;
+    letter-spacing: 0.22em;
+    margin-right: 6mm;
+  }
+  .doc-meta .sep {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--sky-blue);
+    border-radius: 50%;
+    margin: 0 8px;
+    vertical-align: middle;
+  }
+
+  /* ---------- Continuation header ---------- */
+  .header-slim {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5mm;
+    margin-bottom: 7mm;
+    border-bottom: 1px solid var(--brown-30);
+  }
+  .header-slim .logo-mini { width: 13mm; height: auto; }
+  .header-slim .meta {
+    text-align: right;
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    line-height: 1.6;
+  }
+  .header-slim .meta .continued { color: var(--brown); }
+
+  /* ---------- Title block ---------- */
+  .title-block { margin-bottom: 5mm; }
+  h1 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 23pt;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--brown);
+    margin: 0 0 3mm;
+  }
+  .subtitle {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 10pt;
+    letter-spacing: 0.04em;
+    color: var(--dark-blue);
+    margin: 0 0 4mm;
+  }
+  .intro {
+    font-family: var(--body);
+    font-size: 10.5pt;
+    line-height: 1.4;
+    color: var(--brown);
+    margin: 0;
+  }
+  .intro em { font-style: italic; }
+
+  /* ---------- ID strip ---------- */
+  .id-strip {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.6fr;
+    gap: 4mm 7mm;
+    padding: 4mm 5mm;
+    margin-bottom: 6mm;
+    background: rgba(126, 194, 241, 0.10);
+    border-left: 3px solid var(--sky-blue);
+  }
+  .id-strip .field { display: flex; flex-direction: column; }
+  .id-strip label {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7pt;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    margin-bottom: 2mm;
+  }
+  .id-strip .line {
+    border: none;
+    border-bottom: 1px solid var(--brown-60);
+    height: 7mm;
+    background: transparent;
+    font-family: var(--body);
+    font-size: 11pt;
+    color: var(--brown);
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none; appearance: none; border-radius: 0;
+  }
+  .id-strip .line:focus { background: rgba(126,194,241,0.12); border-bottom-color: var(--brown); }
+
+  /* ---------- Section ---------- */
+  section { margin-bottom: 3.5mm; break-inside: avoid; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 3mm;
+  }
+  .section-num {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 8pt;
+    letter-spacing: 0.15em;
+    color: var(--cream);
+    background: var(--brown);
+    padding: 3px 7px 2px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  h2 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 13pt;
+    color: var(--brown);
+    margin: 0;
+    line-height: 1.1;
+  }
+  .section-cont {
+    font-size: 9pt;
+    color: var(--brown-60);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-left: 4mm;
+  }
+
+  /* ---------- Prose ---------- */
+  p.body-text {
+    font-family: var(--body);
+    font-size: 10pt;
+    line-height: 1.34;
+    color: var(--brown);
+    margin: 0 0 2.2mm;
+  }
+  p.body-text .lead {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9.5pt;
+    color: var(--dark-blue);
+    letter-spacing: 0.01em;
+  }
+  .body-text em { font-style: italic; }
+  ul.bullets {
+    margin: 0 0 2.4mm 6mm;
+    padding: 0;
+    font-family: var(--body);
+    font-size: 10pt;
+    line-height: 1.32;
+    color: var(--brown);
+  }
+  ul.bullets li { margin-bottom: 1.2mm; }
+  ul.bullets li strong {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9.5pt;
+    color: var(--brown);
+  }
+
+  .callout {
+    background: rgba(255, 181, 108, 0.14);
+    border-left: 3px solid var(--peach);
+    padding: 4mm 5mm;
+    margin: 0 0 3.2mm;
+    font-family: var(--body);
+    font-size: 10pt;
+    line-height: 1.34;
+  }
+  .callout strong {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9.5pt;
+  }
+
+  .routes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+    margin: 0 0 3mm;
+  }
+  .routes .route {
+    border: 1px solid var(--brown-30);
+    padding: 3.5mm 4mm;
+    text-align: center;
+  }
+  .routes .route .label {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9.5pt;
+    color: var(--brown);
+    letter-spacing: 0.02em;
+  }
+  .routes .route .desc {
+    font-family: var(--body);
+    font-size: 9pt;
+    color: var(--brown-60);
+    margin-top: 1.5mm;
+  }
+
+  /* ---------- Consent statements ---------- */
+  .consent-list { counter-reset: cstmt; margin: 0 0 4mm; }
+  .consent-item {
+    display: flex;
+    gap: 4mm;
+    margin-bottom: 2mm;
+    break-inside: avoid;
+  }
+  .consent-item .tick {
+    width: 4mm; height: 4mm;
+    border: 1px solid var(--brown);
+    flex-shrink: 0;
+    margin-top: 1mm;
+    border-radius: 0;
+  }
+  .consent-item p {
+    margin: 0;
+    font-family: var(--body);
+    font-size: 10pt;
+    line-height: 1.34;
+  }
+  .consent-item p em { font-style: italic; }
+  .consent-item p .cite {
+    font-style: italic;
+    color: var(--brown-60);
+    font-size: 9.5pt;
+  }
+
+  /* ---------- Signature ---------- */
+  .auth-box {
+    border: 1px solid var(--brown-30);
+    padding: 4mm 6mm;
+    margin-top: 2.5mm;
+    break-inside: avoid;
+  }
+  .auth-box h3 {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 10pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brown);
+    margin: 0 0 3mm;
+  }
+  .auth-statement {
+    font-family: var(--body);
+    font-size: 10pt;
+    line-height: 1.35;
+    margin: 0 0 4mm;
+  }
+  .sig-field { display: flex; flex-direction: column; margin-bottom: 3mm; }
+  .sig-field label {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7.5pt;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    margin-bottom: 2mm;
+  }
+  .sig-field .line {
+    border: none;
+    border-bottom: 1px solid var(--brown-60);
+    height: 8mm;
+    background: transparent;
+    width: 100%;
+    font-family: var(--body);
+    font-size: 11pt;
+    color: var(--brown);
+    outline: none;
+    -webkit-appearance: none; appearance: none; border-radius: 0;
+    padding: 0 2px;
+  }
+  .sig-field .line:focus { background: rgba(126,194,241,0.12); border-bottom-color: var(--brown); }
+  .sig-row {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 6mm;
+  }
+
+  .legal-note {
+    font-family: var(--body);
+    font-size: 9pt;
+    line-height: 1.4;
+    color: var(--brown-60);
+    margin: 4mm 0 0;
+    font-style: italic;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    position: absolute;
+    left: 18mm; right: 18mm;
+    bottom: 12mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 7pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown-60);
+    padding-top: 4mm;
+    border-top: 1px solid var(--brown-15);
+  }
+  .footer .mono-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--sky-blue);
+    display: inline-block;
+    margin: 0 8px;
+    vertical-align: middle;
+  }
+
+  /* ---------- Print ---------- */
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: var(--cream); }
+    .page { margin: 0; box-shadow: none; page-break-after: always; }
+    .page:last-of-type { page-break-after: auto; }
+    .no-print { display: none; }
+  }
+  .print-bar { position: fixed; top: 16px; right: 16px; z-index: 10; display: flex; gap: 8px; }
+  .print-bar .btn-clear { background: transparent; color: var(--brown); border: 1px solid var(--brown); }
+  .print-bar .btn-clear:hover { background: var(--brown-15); color: var(--brown); }
+  .print-bar button {
+    font-family: var(--heading);
+    font-weight: 500;
+    font-size: 9pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--brown);
+    border: none;
+    padding: 10px 18px;
+    cursor: pointer;
+  }
+  .print-bar button:hover { background: var(--dark-blue); }
+
+  /* ---------- Letter-specific ---------- */
+  .letter-body p {
+    font-family: var(--body);
+    font-size: 11pt;
+    line-height: 1.45;
+    color: var(--brown);
+    margin: 0 0 3mm;
+  }
+  .letter-body p .bold { font-weight: 600; }
+  .letter-body em { font-style: italic; }
+  textarea.notes {
+    width: 100%;
+    min-height: 18mm;
+    border: 1px solid var(--brown-30);
+    background: transparent;
+    font-family: var(--body);
+    font-size: 11pt;
+    line-height: 1.5;
+    color: var(--brown);
+    padding: 3mm 4mm;
+    outline: none;
+    resize: none;
+    border-radius: 0;
+  }
+  textarea.notes:focus { background: rgba(126,194,241,0.12); border-color: var(--brown-60); }
+  .signoff { margin-top: 6mm; }
+  .signoff p { font-family: var(--body); font-size: 11.5pt; margin: 0 0 2mm; }
+  .signoff .name { font-family: var(--heading); font-weight: 500; font-size: 11pt; color: var(--brown); margin-top: 6mm; }
+  .signoff .role { font-family: var(--body); font-size: 11pt; color: var(--brown-60); font-style: italic; }
+</style>
+</head>
+<body>
+
+<div class="print-bar no-print">
+  <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  <button type="button" class="btn-clear" onclick="clearFields()">Clear fields</button>
+</div>
+
+<!-- ================= PAGE 1 ================= -->
+<div class="page">
+
+  <header class="header-center">
+    <svg class="logo-stack" viewBox="720 780 560 440" xmlns="http://www.w3.org/2000/svg" aria-label="The Microbiome Clinic">
+      <g fill="#5D5A49">
+        <path d="M851.45,802.09c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M904.99,792.29h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1012.11,894.25c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.51.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M1128.13,900.04c-6.68-9.94-15.73-23.89-24.34-35.17-1.93-2.38-3.41-4.45-5.94-6.68,14.1-5.05,22.26-16.18,22.26-31.46,0-19-13.65-34.43-36.06-34.43h-34.28c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-40.96c2.37,0,5.34.15,8.46,1.04,5.05,1.48,9.2,5.94,11.72,9.35,7.27,10.39,14.4,20.78,21.52,31.31,1.93,2.82,3.12,5.34,4.01,9.05h23.75c-3.71-3.12-6.08-6.23-9.35-10.98ZM1078.56,846.16c-3.71,0-6.83-.15-10.54-1.04v-37.84h12.91c14.99,0,22.41,8.46,22.41,19.59s-7.42,19.29-24.78,19.29Z"/>
+        <path d="M1203.04,790.81c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM1202.89,897.07c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M801.03,996.02c6.98-4.9,11.58-13.36,11.58-23.45,0-17.81-12.91-31.91-33.69-31.91h-33.24c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h40.07c23.3,0,37.4-12.61,37.4-33.24,0-15.43-9.35-26.71-22.11-30.13ZM763.92,955.66h12.91c12.17,0,19.29,7.72,19.29,17.51,0,10.39-5.64,18.11-20.63,18.11h-11.58v-35.62ZM783.96,1044.26h-20.04v-37.99h19.29c15.43,0,23.15,8.9,23.15,19.59s-6.23,18.4-22.41,18.4Z"/>
+        <path d="M868.98,940.67h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M956.47,939.18c-34.28,0-60.85,26.42-60.85,60.85s26.56,60.85,60.85,60.85,60.85-26.42,60.85-60.85-26.56-60.85-60.85-60.85ZM956.32,1045.44c-24.49,0-43.48-19.74-43.48-45.41s19-45.56,43.48-45.56,43.48,19.74,43.48,45.56-19,45.41-43.48,45.41Z"/>
+        <path d="M1150.51,950.46c-.15-4.3.74-6.83,3.71-9.79h-18.85l-36.36,74.8-36.95-74.8h-19.14c2.97,2.97,4.3,5.49,4.16,12.91l-2.37,96.02c-.15,4.3-.74,6.83-2.23,9.79h19.89c-1.48-2.97-2.37-5.49-2.23-9.79l1.63-73.02,31.31,63.52h11.43l30.87-63.81,1.78,73.31c.15,4.3-.74,6.83-2.23,9.79h20.18c-1.48-2.97-2.08-5.49-2.23-9.79l-2.37-99.14Z"/>
+        <path d="M1204.66,1044.26v-37.7h33.69c4.3,0,6.83.74,9.79,2.23v-19.59c-2.97,1.48-5.49,2.23-9.79,2.23h-33.69v-35.62h32.5c6.08,0,9.5,1.19,12.91,3.12l-.74-18.25h-62.92c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h64.26l4.16-18.25c-3.41,1.93-8.01,3.12-14.1,3.12h-36.06Z"/>
+        <path d="M820.56,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+        <path d="M874.77,1192.57v-93.79c0-4.3.74-6.83,2.23-9.79h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h58.18l2.37-18.25c-3.41,1.93-6.83,3.12-12.91,3.12h-29.38Z"/>
+        <path d="M953.36,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1086.97,1088.98h-19.59c1.48,2.97,2.23,5.49,2.23,9.79v81.62l-71.24-91.42h-17.81c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h19.59c-1.48-2.97-2.23-5.49-2.23-9.79v-82.96l71.83,92.75h15.73c-.45-2.97-.74-5.49-.74-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1134.65,1088.98h-20.48c1.48,2.97,2.23,5.49,2.23,9.79v99.14c0,4.3-.74,6.83-2.23,9.79h20.48c-1.48-2.97-2.23-5.49-2.23-9.79v-99.14c0-4.3.74-6.83,2.23-9.79Z"/>
+        <path d="M1240.07,1190.94c-5.34,2.08-11.58,2.97-18.7,2.97-29.53,0-48.53-19.74-48.53-45.56s18.7-45.56,48.53-45.56c7.12,0,13.5.74,18.7,2.38,6.53,2.08,10.09,4.75,13.95,8.61l-.45-20.63c-10.98-4.6-20.33-5.64-32.35-5.64-38.14,0-65.6,26.42-65.6,60.85s26.27,60.85,65.6,60.85c12.02,0,21.37-1.48,32.35-6.08l.59-21.67c-3.41,3.86-6.38,6.53-14.1,9.5Z"/>
+      </g>
+    </svg>
+    <div class="doc-meta">
+      <span class="pill">Probiotic enema travel letter</span>
+      Form FMT-TL01 <span class="sep"></span> v2026.1
+    </div>
+  </header>
+
+  <div class="title-block">
+    <h1>Probiotic enema travel letter</h1>
+    <p class="subtitle">To whom it may concern &mdash; transport &amp; security staff</p>
+    <p class="intro">
+      This letter confirms that the patient named below is travelling with prescribed probiotic enemas that must be kept <em>refrigerated</em> during transport. Complete the patient details, then print or save as PDF.
+    </p>
+  </div>
+
+  <div class="id-strip">
+    <div class="field" style="grid-column: 1 / -1;"><label>Patient name</label><input type="text" class="line"></div>
+    <div class="field" style="grid-column: 1 / 3;"><label>Date of birth</label><input type="text" class="line"></div>
+    <div class="field"><label>Date</label><input type="text" class="line"></div>
+    <div class="field" style="grid-column: 1 / -1;"><label>Address</label><input type="text" class="line"></div>
+  </div>
+
+  <section>
+    <div class="section-head"><span class="section-num">01</span><h2>Travel authorisation</h2></div>
+    <div class="letter-body">
+      <p>To whom it may concern,</p>
+      <p>The above-named patient is travelling with probiotic enemas which need to be kept <em>cold</em> during transport.</p>
+      <p>These enemas do <span class="bold">not</span> contain any bio-hazard materials.</p>
+    </div>
+    <div class="callout">
+      <strong>For transport &amp; security staff.</strong> These items are a prescribed therapeutic product and must remain refrigerated. They pose no biological hazard. If you have any questions please feel free to contact the clinic on <strong>03&nbsp;9007&nbsp;2630</strong>.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">02</span><h2>Additional notes</h2></div>
+    <textarea class="notes" placeholder="Type any custom notes here (e.g. quantity, storage temperature, return travel dates)…"></textarea>
+  </section>
+
+  <div class="signoff">
+    <p>Kind regards,</p>
+    <p class="name">Patient Care Team</p>
+    <p class="role">The Microbiome Clinic&trade;</p>
+  </div>
+
+  <div class="footer">
+    <div>The Microbiome Clinic <span class="mono-dot"></span> 10/521 Toorak Rd, Toorak VIC 3142</div>
+    <div>03 9007 2630 <span class="mono-dot"></span> themicrobiomeclinic.com.au</div>
+  </div>
+</div>
+
+<script>
+  function clearFields() {
+    if (!confirm('Clear all entered text on this form?')) return;
+    document.querySelectorAll('input[type="text"], textarea').forEach(function (el) { el.value = ''; });
+    document.querySelectorAll('input[type="checkbox"]').forEach(function (el) { el.checked = false; });
+  }
+</script>
+</body>
+</html>
