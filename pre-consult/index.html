@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
 <style>
 :root{
   --peach:#FFB56C;
@@ -175,6 +176,8 @@ select{background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.o
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:480px){.two-col{grid-template-columns:1fr}}
 .optional-tag{font-weight:400;color:var(--grey);font-size:12px;letter-spacing:0;text-transform:none}
+.turnstile-wrap{display:flex;justify-content:center;margin-top:18px;min-height:70px}
+.turnstile-note{font-family:var(--heading);font-size:12.5px;color:var(--grey);text-align:center;margin-top:8px}
 .add-btn{margin-top:16px;display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--heading);font-size:14px;font-weight:600;color:var(--brown);background:var(--peach-faint);border:1.5px dashed var(--peach-soft);border-radius:12px;padding:13px 18px;cursor:pointer;transition:all .15s;width:100%;user-select:none}
 .add-btn:hover{border-color:var(--peach);background:#FFE9D2}
 .add-btn:active{transform:scale(.99)}
@@ -520,8 +523,11 @@ consent:{
      </div>
      <div class="opts"><div class="opt sq ${answers.consent?'selected':''}" onclick="answers.consent=!answers.consent;this.classList.toggle('selected');check()">
        <span class="box"></span><span class="txt">I have read and agree to the collection and use of my information as described above, and I confirm the answers I've given are accurate to the best of my knowledge.</span>
-     </div></div>`,
-  valid:()=>answers.consent===true
+     </div></div>
+     <div class="turnstile-wrap"><div id="turnstileBox"></div></div>
+     <p class="turnstile-note">A quick automated check that you're a real person.</p>`,
+  onRender:()=>mountTurnstile(),
+  valid:()=>answers.consent===true && !!turnstileToken
 },
 details:{
   render:()=>stepHead("Lastly — your details","Just enough to match your answers to your appointment.")+
@@ -665,6 +671,26 @@ function toggleNewSymExtra(){
   if(x) x.style.display = nonEmpty(answers.newSym)?'block':'none';
 }
 
+/* ============ Turnstile (bot check) ============ */
+const TURNSTILE_SITE_KEY = "0x4AAAAAAEAbihqlASLuDAFR";
+let turnstileToken = null;
+let turnstileWidgetId = null;
+
+function mountTurnstile(){
+  const box = document.getElementById('turnstileBox');
+  if(!box) return;
+  if(!window.turnstile){ setTimeout(mountTurnstile, 300); return; }
+  turnstileToken = null;
+  turnstileWidgetId = window.turnstile.render(box, {
+    sitekey: TURNSTILE_SITE_KEY,
+    action: 'pre-consult',
+    callback: (t)=>{ turnstileToken = t; check(); },
+    'expired-callback': ()=>{ turnstileToken = null; check(); },
+    'error-callback': ()=>{ turnstileToken = null; check(); }
+  });
+  check();
+}
+
 /* ============ submission ============ */
 const ENDPOINT = "https://rtmbmuzccajxidyhvykc.supabase.co/functions/v1/submit-pre-consult";
 /* New Patient form (HealthEngine → Gentu). Initial consults only.
@@ -736,6 +762,7 @@ function buildPayload(){
 
     consent_given: answers.consent === true,
     disclaimer_accepted: answers.disclaimer === true,
+    turnstile_token: turnstileToken,
     website: ''   // honeypot — must stay empty
   };
 }
@@ -816,6 +843,7 @@ function render(){
     document.getElementById('pctText').textContent=Math.min(pct,100)+'%';
     document.getElementById('ringBar').style.strokeDashoffset = 56.5*(1-Math.min(pct,100)/100);
   }
+  if(typeof st.onRender === 'function') st.onRender();
   // side fact rotation
   const ft=document.getElementById('factText');
   if(ft){ft.parentElement.style.opacity=0; setTimeout(()=>{ft.textContent=facts[factIdx++%facts.length];ft.parentElement.style.opacity=1;},350);}
