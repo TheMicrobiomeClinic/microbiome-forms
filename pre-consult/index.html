@@ -667,8 +667,11 @@ function toggleNewSymExtra(){
 
 /* ============ submission ============ */
 const ENDPOINT = "https://rtmbmuzccajxidyhvykc.supabase.co/functions/v1/submit-pre-consult";
-/* Set this to the New Patient form URL (HealthEngine → Gentu). Initial consults only. */
-const NEW_PATIENT_FORM_URL = "";
+/* New Patient form (HealthEngine → Gentu). Initial consults only.
+   Deliberately NOT prefilled: appending name/DOB/email to a third-party URL would put
+   patient details into server logs, browser history and referrer headers. */
+const NEW_PATIENT_FORM_URL =
+  "https://healthengine.com.au/new-patient-form/v2/100947?cid=sos:pra:::npf::::jul22";
 
 let submitState = { sending:false, done:false, error:null, result:null };
 
@@ -778,20 +781,13 @@ function renderSubmitError(){
 }
 function retrySubmit(){ submitState.error=null; render(); }
 
-/* Initial consults: hand off to the existing New Patient form, prefilled. */
+/* Initial consults: hand off to the New Patient form (HealthEngine → Gentu). */
 function goToNewPatientForm(){
   if(!NEW_PATIENT_FORM_URL){
-    alert("Beta: the New Patient form URL hasn't been set yet.\n\nYour answers HAVE been saved successfully.");
+    alert("The New Patient form link isn't set yet.\n\nYour answers HAVE been saved successfully — please call us on 03 9007 2630.");
     return;
   }
-  const q = new URLSearchParams({
-    name: answers.name || '',
-    dob: answers.dob || '',
-    email: answers.email || '',
-    mobile: answers.mobile || ''
-  });
-  window.location.href = NEW_PATIENT_FORM_URL +
-    (NEW_PATIENT_FORM_URL.includes('?') ? '&' : '?') + q.toString();
+  window.location.href = NEW_PATIENT_FORM_URL;
 }
 
 /* ============ engine ============ */
