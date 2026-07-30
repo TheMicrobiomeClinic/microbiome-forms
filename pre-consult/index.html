@@ -337,7 +337,7 @@ i_goals:{
     const n = goalCount();
     return stepHead("What are your main goals with coming to the clinic?",
       "Choose up to three, or add your own. <b>"+n+" of 3 selected.</b>")+
-    chips('secChips',["More energy","Better digestion","Clearer skin","Weight","Mood & anxiety","Better sleep","Leaky gut","Bad breath","Better immunity","Less brain fog","Understand my results","A clear plan","Hormones / fertility","Reduce medications","Optimise my health"], 3, 'goalCount')+
+    chips('secChips',["Reduce bloating","Better digestion","Normalise bowel habits","Eat more foods","More energy","Less brain fog","Mood & anxiety","Clearer skin","Lose weight","Stronger immunity","Joint pain","Bad breath","Improve vaginal hygiene","Hormones / fertility","Reduce medications","Understand my results","A clear plan","Optimise my health"], 3, 'goalCount')+
     `<div style="height:16px"></div>
      <label class="f">OR ADD YOUR OWN GOAL</label>
      <textarea id="f1" style="min-height:80px" placeholder="In your own words…" oninput="answers.secondaryText=this.value;render()">${esc(answers.secondaryText)}</textarea>
