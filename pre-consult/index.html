@@ -178,6 +178,12 @@ select{background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.o
 .optional-tag{font-weight:400;color:var(--grey);font-size:12px;letter-spacing:0;text-transform:none}
 .turnstile-wrap{display:flex;justify-content:center;margin-top:18px;min-height:70px}
 .turnstile-note{font-family:var(--heading);font-size:12.5px;color:var(--grey);text-align:center;margin-top:8px}
+.fmt-info{background:#FFF6EC;border:1.5px solid #FFD9B3;border-radius:12px;padding:15px 17px;margin-bottom:18px}
+.fmt-info h4{font-family:var(--heading);font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--brown);margin-bottom:7px}
+.fmt-info p{font-size:15.5px;line-height:1.55;margin-bottom:8px}
+.fmt-info p:last-child{margin-bottom:0}
+.dob-row{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:10px}
+.dob-row input{text-align:center}
 .add-btn{margin-top:16px;display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--heading);font-size:14px;font-weight:600;color:var(--brown);background:var(--peach-faint);border:1.5px dashed var(--peach-soft);border-radius:12px;padding:13px 18px;cursor:pointer;transition:all .15s;width:100%;user-select:none}
 .add-btn:hover{border-color:var(--peach);background:#FFE9D2}
 .add-btn:active{transform:scale(.99)}
@@ -321,28 +327,23 @@ i_resonate:{
     `<textarea id="f1" placeholder="In your own words…" oninput="answers.resonate=this.value;check()">${esc(answers.resonate)}</textarea>`,
   valid:()=>nonEmpty(answers.resonate)
 },
-i_suspect:{
-  render:()=>stepHead("Why do you suspect your microbiome may be involved?","Tell us the story — symptoms, timing, gut feelings included.")+
-    `<textarea id="f1" class="tall" placeholder="What's led you to think your microbiome could be playing a role…" oninput="answers.suspect=this.value;check()">${esc(answers.suspect)}</textarea>`,
-  valid:()=>nonEmpty(answers.suspect)
-},
 i_indicated:{
   autoAdvance:true,
   render:()=>stepHead("Who first suggested your microbiome might be the issue?")+
-    radios('indicated',[["self","I worked it out myself"],["gp","My GP"],["specialist","A specialist"],["naturopath","A naturopath or other practitioner"],["online","My own online research"],["noone","No one yet — I'm exploring"]])
+    radios('indicated',[["self","I worked it out myself"],["gp","My GP"],["specialist","A specialist"],["naturopath","A naturopath or other practitioner"],["online","My own online research"],["noone","No one yet — I'm exploring"],["optimise","Not an issue — I'm looking to optimise my health"]])
 },
-i_primary:{
-  render:()=>stepHead("What is the ONE main thing you want from this consult?","Please be as comprehensive as you can — the more detail you give, the more we can tailor your consult to you.")+
-    `<textarea id="f1" class="tall" placeholder="Take your time with this one. What matters most to you right now?" oninput="answers.primaryGoal=this.value;check()">${esc(answers.primaryGoal)}</textarea>
-     <p class="hint">This becomes the headline of your doctor's run sheet.</p>`,
-  valid:()=>nonEmpty(answers.primaryGoal)
-},
-i_secondary:{
-  render:()=>stepHead("Any secondary goals?","Tap any that apply, or add your own below.")+
-    chips('secChips',["More energy","Better digestion","Clearer skin","Weight","Mood & anxiety","Better sleep","Leaky gut","Bad breath","Better immunity","Less brain fog","Understand my results","A clear plan","Hormones / fertility","Reduce medications"])+
-    `<div style="height:14px"></div>
-     <textarea id="f1" style="min-height:90px" placeholder="Anything else you're hoping for…" oninput="answers.secondaryText=this.value;check()">${esc(answers.secondaryText)}</textarea>`,
-  valid:()=>(answers.secChips&&answers.secChips.length)||nonEmpty(answers.secondaryText)
+i_goals:{
+  render:()=>{
+    const n = goalCount();
+    return stepHead("What are your main goals with coming to the clinic?",
+      "Choose up to three, or add your own. <b>"+n+" of 3 selected.</b>")+
+    chips('secChips',["More energy","Better digestion","Clearer skin","Weight","Mood & anxiety","Better sleep","Leaky gut","Bad breath","Better immunity","Less brain fog","Understand my results","A clear plan","Hormones / fertility","Reduce medications","Optimise my health"], 3, 'goalCount')+
+    `<div style="height:16px"></div>
+     <label class="f">OR ADD YOUR OWN GOAL</label>
+     <textarea id="f1" style="min-height:80px" placeholder="In your own words…" oninput="answers.secondaryText=this.value;render()">${esc(answers.secondaryText)}</textarea>
+     ${n>3?`<p class="hint" style="color:#B04A2B">Please select no more than 3 goals.</p>`:''}`;
+  },
+  valid:()=>{ const n=goalCount(); return n>=1 && n<=3; }
 },
 i_concern:{
   render:()=>{
@@ -361,7 +362,7 @@ i_concern:{
           ${scaleRowConcern(i)}
           <div class="anchors"><span>0 — No impact</span><span>10 — Severe daily impact</span></div></div>
       </div>`;
-    return stepHead("Your main symptom or concern","Have more than one? Add each separately so your doctor can address them all.")+
+    return stepHead("List all your main symptoms and concerns","Add each one separately so your doctor can address them all.")+
       `<div id="concernList">${answers.concerns.map(block).join('')}</div>
        <div class="add-btn" onclick="addConcern()">+ Add another concern</div>`;
   },
@@ -494,6 +495,38 @@ scaleIntro:{
       <button class="btn btn-cta" onclick="next()">Start check-in</button>
     </div>`
 },
+screening:{
+  render:()=>stepHead("Two quick questions","These help us make sure any treatment we suggest is safe and suitable for you.")+
+    `<div class="field">
+      <label class="f">ARE YOU PREGNANT, OR LOOKING TO BECOME PREGNANT?</label>
+      ${radios('pregnancy',[
+        ["yes_pregnant","Yes — I am pregnant"],
+        ["yes_trying","Yes — I'm trying, or planning to"],
+        ["breastfeeding","I'm currently breastfeeding"],
+        ["no","No"],
+        ["na","Not applicable"]
+      ])}
+     </div>
+
+     <div style="height:26px"></div>
+
+     <div class="fmt-info">
+       <h4>About FMT</h4>
+       <p>Faecal Microbial Transplant (FMT) is widely regarded as the gold standard in microbiome therapy. It works by restoring a healthy, diverse microbial community to your gut using screened donor material.</p>
+       <p>The Microbiome Clinic provides FMT to patients <b>Australia-wide</b>, delivered under specialist supervision. Not everyone needs it, and it isn't right for every condition — but if it's something you're curious about, your doctor can talk you through whether it suits your situation.</p>
+     </div>
+     <div class="field">
+      <label class="f">ARE YOU SEEKING OUT, INTERESTED IN, OR OPEN TO FMT?</label>
+      ${radios('fmt_interest',[
+        ["seeking","Yes — it's a main reason I'm coming"],
+        ["interested","Yes — I'm interested and want to know more"],
+        ["open","I'm open to it if my doctor recommends it"],
+        ["unsure","I'm not sure yet"],
+        ["no","No — not for me"]
+      ])}
+     </div>`,
+  valid:()=>!!answers.pregnancy && !!answers.fmt_interest
+},
 extras:{
   render:()=>stepHead("Anything else?","Both optional — but often the most valuable answers of all.")+
     `<div class="field"><label class="f">ANYTHING ELSE THE DOCTOR SHOULD KNOW BEFORE YOUR CONSULT?</label>
@@ -532,7 +565,14 @@ consent:{
 details:{
   render:()=>stepHead("Lastly — your details","Just enough to match your answers to your appointment.")+
     `<div class="field"><label class="f">FULL NAME</label><input type="text" autocomplete="name" placeholder="Your full name" value="${esc(answers.name)}" oninput="answers.name=this.value;check()"></div>
-     <div class="field"><label class="f">DATE OF BIRTH</label><input type="date" autocomplete="bday" value="${esc(answers.dob)}" onchange="answers.dob=this.value;check()" oninput="answers.dob=this.value;check()"></div>
+     <div class="field"><label class="f">DATE OF BIRTH</label>
+      <div class="dob-row">
+        <input type="text" inputmode="numeric" maxlength="2" placeholder="DD" value="${esc(answers.dobD)}" oninput="setDob('dobD',this)">
+        <input type="text" inputmode="numeric" maxlength="2" placeholder="MM" value="${esc(answers.dobM)}" oninput="setDob('dobM',this)">
+        <input type="text" inputmode="numeric" maxlength="4" placeholder="YYYY" value="${esc(answers.dobY)}" oninput="setDob('dobY',this)">
+      </div>
+      ${answers.dobD||answers.dobM||answers.dobY ? (answers.dob ? `<p class="hint left" style="color:#5D5A49">${dobPretty()}</p>` : `<p class="hint left" style="color:#B04A2B">Please enter a valid date as DD / MM / YYYY.</p>`) : ''}
+     </div>
      <div class="two-col">
        <div class="field"><label class="f">EMAIL</label><input type="email" autocomplete="email" placeholder="you@email.com" value="${esc(answers.email)}" oninput="answers.email=this.value;check()"></div>
        <div class="field"><label class="f">MOBILE</label><input type="tel" autocomplete="tel" placeholder="04xx xxx xxx" value="${esc(answers.mobile)}" oninput="answers.mobile=this.value;check()"></div>
@@ -600,8 +640,8 @@ SCALES.forEach((s,i)=>{
 
 /* ============ flows ============ */
 const SCALE_IDS = SCALES.map(s=>'scale_'+s.id);
-const FLOW_INITIAL = ['welcome','gate','i_found','i_referrer','i_resonate','i_suspect','i_indicated','i_primary','i_secondary','i_concern','i_tried','i_success','transition','questions','scaleIntro',...SCALE_IDS,'extras','disclaimer','consent','details','loading','done_initial'];
-const FLOW_FOLLOWUP = ['welcome','gate','f_since','f_compare','f_changed','f_adherence','f_barriers','f_feeling','f_sense','f_newsym','f_want','f_primary','transition','questions','scaleIntro',...SCALE_IDS,'extras','disclaimer','consent','details','loading','done_followup'];
+const FLOW_INITIAL = ['welcome','gate','i_found','i_referrer','i_resonate','i_indicated','i_goals','i_concern','i_tried','i_success','transition','questions','scaleIntro',...SCALE_IDS,'screening','extras','disclaimer','consent','details','loading','done_initial'];
+const FLOW_FOLLOWUP = ['welcome','gate','f_since','f_compare','f_changed','f_adherence','f_barriers','f_feeling','f_sense','f_newsym','f_want','f_primary','transition','questions','scaleIntro',...SCALE_IDS,'screening','extras','disclaimer','consent','details','loading','done_followup'];
 flow = FLOW_INITIAL; // until gate answered
 
 /* ============ helpers ============ */
@@ -617,10 +657,16 @@ function checks(key,items){
   return `<div class="opts">`+items.map(([v,l])=>
     `<div class="opt sq ${answers[key].includes(v)?'selected':''}" onclick="toggleCheck('${key}','${v}',this)"><span class="box"></span><span class="txt">${l}</span></div>`).join('')+`</div>`;
 }
-function chips(key,items){
+function chips(key,items,max,counterFn){
   answers[key]=answers[key]||[];
+  const rerender = max ? 'true' : 'false';
   return `<div class="chips">`+items.map(c=>
-    `<span class="chip ${answers[key].includes(c)?'selected':''}" onclick="toggleChipVal('${key}','${c.replace(/'/g,"\\'")}',this)">${c}</span>`).join('')+`</div>`;
+    `<span class="chip ${answers[key].includes(c)?'selected':''}" onclick="toggleChipVal('${key}','${c.replace(/'/g,"\\'")}',this,${max||0},${rerender})">${c}</span>`).join('')+`</div>`;
+}
+/* goals = selected chips + (1 if they typed their own) */
+function goalCount(){
+  const chipsN = (answers.secChips||[]).length;
+  return chipsN + (nonEmpty(answers.secondaryText) ? 1 : 0);
 }
 function scaleRow(key){
   return `<div class="scale-row">`+Array.from({length:11},(_,n)=>
@@ -642,7 +688,8 @@ function pickRadio(key,val,el){
   if(key==='gate'){ flow = val==='initial' ? FLOW_INITIAL : FLOW_FOLLOWUP; }
   check();
   const st=steps[flow[stepIdx]];
-  if(st.autoAdvance) setTimeout(next, 320);
+  // only auto-advance single-question steps
+  if(st.autoAdvance && flow[stepIdx] !== 'screening') setTimeout(next, 320);
 }
 function toggleCheck(key,val,el){
   const a=answers[key]=answers[key]||[];
@@ -651,10 +698,18 @@ function toggleCheck(key,val,el){
   el.classList.toggle('selected');
   check();
 }
-function toggleChipVal(key,val,el){
+function toggleChipVal(key,val,el,max,rerender){
   const a=answers[key]=answers[key]||[];
   const i=a.indexOf(val);
-  i>=0?a.splice(i,1):a.push(val);
+  if(i>=0){ a.splice(i,1); }
+  else {
+    if(max && goalCount() >= max){ 
+      el.animate([{transform:'translateX(0)'},{transform:'translateX(-4px)'},{transform:'translateX(4px)'},{transform:'translateX(0)'}],{duration:220});
+      return;
+    }
+    a.push(val);
+  }
+  if(rerender){ render(); return; }
   el.classList.toggle('selected');
   check();
 }
@@ -716,13 +771,15 @@ function buildPayload(){
     referrer: answers.referrer || null,
     referrer_declined: answers.referrerDecline === true,
     resonated: answers.resonate || null,
-    microbiome_suspicion: answers.suspect || null,
+
     indicated_by: answers.indicated || null,
     already_tried: answers.tried || null,
     success_looks_like: answers.success || null,
 
-    // shared goals
+    // goals (merged: up to 3, chips + own words)
     primary_goal: answers.primaryGoal || null,
+    goal_chips: answers.secChips || [],
+    goal_own_words: answers.secondaryText || null,
     secondary_goal_chips: answers.secChips || [],
     secondary_goal_text: answers.secondaryText || null,
     concerns: (answers.concerns || []).map(c => ({ text:c.text, dur:c.dur, impact:c.impact })),
@@ -756,6 +813,9 @@ function buildPayload(){
     scale_mood: answers.scale_mood,
     scale_understanding: answers.scale_underst,
     scale_optimism: answers.scale_optim,
+
+    pregnancy_status: answers.pregnancy || null,
+    fmt_interest: answers.fmt_interest || null,
 
     anything_else: answers.extra || null,
     prefer_not_discuss: answers.avoid || null,
@@ -807,6 +867,44 @@ function renderSubmitError(){
   navbar.style.display='none';
 }
 function retrySubmit(){ submitState.error=null; render(); }
+
+/* ---- Date of birth: entered DD / MM / YYYY, stored as ISO ---- */
+function setDob(field, el){
+  el.value = el.value.replace(/\D/g,'');
+  answers[field] = el.value;
+  const d = answers.dobD, m = answers.dobM, y = answers.dobY;
+  answers.dob = '';
+  if(d && m && y && y.length === 4){
+    const dd = parseInt(d,10), mm = parseInt(m,10), yy = parseInt(y,10);
+    const dt = new Date(yy, mm-1, dd);
+    const now = new Date();
+    if(dt.getFullYear()===yy && dt.getMonth()===mm-1 && dt.getDate()===dd
+       && yy >= 1900 && dt <= now){
+      answers.dob = `${yy}-${String(mm).padStart(2,'0')}-${String(dd).padStart(2,'0')}`;
+    }
+  }
+  // auto-jump to the next box
+  if(el.value.length === parseInt(el.getAttribute('maxlength'),10)){
+    const nx = el.parentElement.querySelector('input:placeholder-shown');
+    if(nx && nx !== el) nx.focus();
+  }
+  check();
+  const hint = el.closest('.field').querySelector('.hint');
+  if(hint) hint.remove();
+  if(d||m||y){
+    const p = document.createElement('p');
+    p.className = 'hint left';
+    if(answers.dob){ p.style.color = '#5D5A49'; p.textContent = dobPretty(); }
+    else { p.style.color = '#B04A2B'; p.textContent = 'Please enter a valid date as DD / MM / YYYY.'; }
+    el.closest('.field').appendChild(p);
+  }
+}
+function dobPretty(){
+  if(!answers.dob) return '';
+  const [y,m,d] = answers.dob.split('-');
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return `${parseInt(d,10)} ${months[parseInt(m,10)-1]} ${y}`;
+}
 
 /* Initial consults: hand off to the New Patient form (HealthEngine → Gentu). */
 function goToNewPatientForm(){
