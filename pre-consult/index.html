@@ -268,6 +268,22 @@ const facts = [
 let factIdx = 0;
 
 /* duration options */
+const SYMPTOM_PROMPTS = [
+  ["bloating",    "Bloating / distension / gas"],
+  ["constipation","Constipation"],
+  ["diarrhoea",   "Diarrhoea / loose stools"],
+  ["abdo_pain",   "Abdominal pain / cramping"],
+  ["food_intol",  "Food intolerances / limited diet"],
+  ["skin",        "Skin issues (acne, eczema, rashes)"],
+  ["oral",        "Bad breath / oral health"],
+  ["vaginal",     "Vaginal hygiene"],
+  ["fatigue",     "Fatigue / low energy"],
+  ["mood",        "Anxiety / depression / low mood"],
+  ["brain_fog",   "Brain fog"],
+  ["joint_pain",  "Joint pain"],
+  ["weight",      "Stubborn weight"]
+];
+
 const DUR = ["Less than 1 month","1–3 months","3–6 months","6–12 months","1–2 years","2–5 years","5+ years","As long as I can remember"];
 
 const SCALES = [
@@ -277,8 +293,6 @@ const SCALES = [
   {id:"digest", q:"Your digestive comfort", lo:"Constant discomfort", hi:"No issues"},
   {id:"sleep",  q:"Your sleep quality", lo:"Very poor", hi:"Excellent"},
   {id:"mood",   q:"Your mood and stress levels", lo:"Struggling", hi:"Calm & positive"},
-  {id:"underst",q:"How well do you feel you understand what's going on with your health?", lo:"No idea", hi:"Fully understand"},
-  {id:"optim",  q:"How optimistic are you about improving?", lo:"Not at all", hi:"Very optimistic"},
 ];
 
 /* ============ step definitions ============ */
@@ -347,12 +361,24 @@ i_goals:{
 },
 i_concern:{
   render:()=>{
-    answers.concerns = (answers.concerns&&answers.concerns.length) ? answers.concerns : [{text:'',dur:'',impact:undefined}];
+    answers.concerns = answers.concerns || [];
+
+    const promptChips = `<div class="chips" style="margin-bottom:6px">` +
+      SYMPTOM_PROMPTS.map(([code,label],i) =>
+        `<span class="chip ${answers.concerns.some(c=>c.code===code)?'selected':''}" onclick="toggleSymptom(${i})">${label}</span>`
+      ).join('') + `</div>`;
+
     const block=(c,i)=>`
-      <div class="concern-block" style="${i>0?'margin-top:22px;border-top:1.5px solid var(--line-soft);padding-top:18px':''}">
-        ${i>0?`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><label class="f" style="margin:0">CONCERN ${i+1}</label><span class="remove-link" onclick="removeConcern(${i})">Remove</span></div>`:''}
-        <div class="field"><label class="f">WHAT IS THE CONCERN?</label>
-          <textarea style="min-height:90px" placeholder="Describe this symptom or concern…" oninput="setConcern(${i},'text',this.value)">${esc(c.text)}</textarea></div>
+      <div class="concern-block" style="margin-top:18px;border-top:1.5px solid var(--line-soft);padding-top:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:9px">
+          <label class="f" style="margin:0">${c.code ? esc(c.text).toUpperCase() : 'SYMPTOM '+(i+1)}</label>
+          <span class="remove-link" onclick="removeConcern(${i})">Remove</span>
+        </div>
+        ${c.code
+          ? `<div class="field"><label class="f">ANYTHING TO ADD? <span class="optional-tag">(optional)</span></label>
+              <textarea style="min-height:70px" placeholder="Describe it in your own words…" oninput="setConcern(${i},'detail',this.value)">${esc(c.detail||'')}</textarea></div>`
+          : `<div class="field"><label class="f">WHAT IS THE SYMPTOM OR CONCERN?</label>
+              <textarea style="min-height:80px" placeholder="Describe this symptom or concern…" oninput="setConcern(${i},'text',this.value)">${esc(c.text)}</textarea></div>`}
         <div class="field"><label class="f">HOW LONG HAVE YOU HAD IT?</label>
           <select onchange="setConcern(${i},'dur',this.value)">
             <option value="" ${!c.dur?'selected':''} disabled>Select duration…</option>
@@ -362,11 +388,16 @@ i_concern:{
           ${scaleRowConcern(i)}
           <div class="anchors"><span>0 — No impact</span><span>10 — Severe daily impact</span></div></div>
       </div>`;
-    return stepHead("List all your main symptoms and concerns","Add each one separately so your doctor can address them all.")+
+
+    return stepHead("List all your main symptoms and concerns",
+                    "Tap anything you're experiencing, then tell us how long and how much it affects you.")+
+      promptChips +
       `<div id="concernList">${answers.concerns.map(block).join('')}</div>
-       <div class="add-btn" onclick="addConcern()">+ Add another concern</div>`;
+       <div class="add-btn" onclick="addConcern()">+ Add a symptom not listed above</div>
+       ${answers.concerns.length===0 ? `<p class="hint">Tap a symptom above, or add your own, to get started.</p>` : ''}`;
   },
-  valid:()=>answers.concerns&&answers.concerns.length>0&&answers.concerns.every(c=>nonEmpty(c.text)&&c.dur&&c.impact!==undefined)
+  valid:()=>answers.concerns && answers.concerns.length>0 &&
+            answers.concerns.every(c=>nonEmpty(c.text) && c.dur && c.impact!==undefined)
 },
 i_tried:{
   render:()=>stepHead("What have you already tried?","Diets, supplements, medications, tests, other practitioners — the full history helps us avoid repeating what hasn't worked.")+
@@ -394,6 +425,16 @@ i_success:{
 },
 
 /* ================= FOLLOW-UP ================= */
+f_treatment:{
+  autoAdvance:true,
+  render:()=>stepHead("Have you started a treatment plan with us yet?","This helps us ask you the right questions.")+
+    radios('treatment_status',[
+      ["on_plan","Yes — I'm on a treatment plan now"],
+      ["completed","Yes — I've finished my plan"],
+      ["awaiting_results","No — I'm waiting on test results or interpretation"],
+      ["not_started","No — I haven't started yet"]
+    ])
+},
 f_since:{
   render:()=>stepHead("How have you been since your last visit?","In your own words — be as open as you like.")+
     `<textarea id="f1" class="tall" placeholder="Tell us how things have really been…" oninput="answers.since=this.value;check()">${esc(answers.since)}</textarea>`,
@@ -641,7 +682,12 @@ SCALES.forEach((s,i)=>{
 /* ============ flows ============ */
 const SCALE_IDS = SCALES.map(s=>'scale_'+s.id);
 const FLOW_INITIAL = ['welcome','gate','i_found','i_referrer','i_resonate','i_indicated','i_goals','i_concern','i_tried','i_success','transition','questions','scaleIntro',...SCALE_IDS,'screening','extras','disclaimer','consent','details','loading','done_initial'];
-const FLOW_FOLLOWUP = ['welcome','gate','f_since','f_compare','f_changed','f_adherence','f_barriers','f_feeling','f_sense','f_newsym','f_want','f_primary','transition','questions','scaleIntro',...SCALE_IDS,'screening','extras','disclaimer','consent','details','loading','done_followup'];
+/* Follow-up A — already on (or finished) a treatment plan: progress review */
+const FLOW_FOLLOWUP = ['welcome','gate','f_treatment','f_since','f_compare','f_changed','f_adherence','f_barriers','f_feeling','f_sense','f_newsym','f_want','f_primary','transition','questions','scaleIntro',...SCALE_IDS,'screening','extras','disclaimer','consent','details','loading','done_followup'];
+
+/* Follow-up B — no treatment started yet (awaiting results, or not begun).
+   Behaves like the initial form: full symptom profile + goals. */
+const FLOW_FOLLOWUP_PRE = ['welcome','gate','f_treatment','f_since','i_goals','i_concern','i_tried','f_feeling','f_sense','f_want','i_success','transition','questions','scaleIntro',...SCALE_IDS,'screening','extras','disclaimer','consent','details','loading','done_followup'];
 flow = FLOW_INITIAL; // until gate answered
 
 /* ============ helpers ============ */
@@ -679,13 +725,25 @@ function scaleRowConcern(i){
 function toggleDecline(el){ answers.referrerDecline=!answers.referrerDecline; if(answers.referrerDecline) answers.referrer=''; render(); }
 function setConcern(i,field,val){ answers.concerns[i][field]=val; check(); }
 function pickConcernScale(i,n,el){ answers.concerns[i].impact=n; el.parentElement.querySelectorAll('.scale-btn').forEach(b=>b.classList.remove('selected')); el.classList.add('selected'); check(); }
-function addConcern(){ answers.concerns.push({text:'',dur:'',impact:undefined}); render(); }
+function toggleSymptom(i){
+  const [code,label] = SYMPTOM_PROMPTS[i];
+  answers.concerns = answers.concerns || [];
+  const at = answers.concerns.findIndex(c=>c.code===code);
+  if(at>=0) answers.concerns.splice(at,1);
+  else answers.concerns.push({code, text:label, detail:'', dur:'', impact:undefined});
+  render();
+}
+function addConcern(){ answers.concerns.push({code:null,text:'',detail:'',dur:'',impact:undefined}); render(); }
 function removeConcern(i){ answers.concerns.splice(i,1); render(); }
 function pickRadio(key,val,el){
   answers[key]=val;
   el.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));
   el.classList.add('selected');
   if(key==='gate'){ flow = val==='initial' ? FLOW_INITIAL : FLOW_FOLLOWUP; }
+  if(key==='treatment_status'){
+    // FLOW_FOLLOWUP and FLOW_FOLLOWUP_PRE share steps 0-2, so stepIdx stays valid.
+    flow = (val==='on_plan' || val==='completed') ? FLOW_FOLLOWUP : FLOW_FOLLOWUP_PRE;
+  }
   check();
   const st=steps[flow[stepIdx]];
   // only auto-advance single-question steps
@@ -760,6 +818,7 @@ function buildPayload(){
   const isInitial = answers.gate === 'initial';
   return {
     consult_type: isInitial ? 'initial' : 'followup',
+    treatment_status: answers.treatment_status || null,
 
     full_name: answers.name || '',
     date_of_birth: answers.dob || '',
@@ -782,7 +841,7 @@ function buildPayload(){
     goal_own_words: answers.secondaryText || null,
     secondary_goal_chips: answers.secChips || [],
     secondary_goal_text: answers.secondaryText || null,
-    concerns: (answers.concerns || []).map(c => ({ text:c.text, dur:c.dur, impact:c.impact })),
+    concerns: (answers.concerns || []).map(c => ({ code:c.code||null, text:c.text, detail:c.detail||null, dur:c.dur, impact:c.impact })),
 
     // follow-up
     since_last_visit: answers.since || null,
@@ -811,8 +870,6 @@ function buildPayload(){
     scale_digest: answers.scale_digest,
     scale_sleep: answers.scale_sleep,
     scale_mood: answers.scale_mood,
-    scale_understanding: answers.scale_underst,
-    scale_optimism: answers.scale_optim,
 
     pregnancy_status: answers.pregnancy || null,
     fmt_interest: answers.fmt_interest || null,
