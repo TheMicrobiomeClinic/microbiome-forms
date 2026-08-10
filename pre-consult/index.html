@@ -184,6 +184,21 @@ select{background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.o
 .fmt-info p:last-child{margin-bottom:0}
 .dob-row{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:10px}
 .dob-row input{text-align:center}
+.modal-wrap{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+  padding:20px;background:rgba(46,44,36,.45);opacity:0;transition:opacity .2s var(--ease)}
+.modal-wrap.show{opacity:1}
+.modal{background:var(--cream);border-radius:20px;padding:26px 24px;width:100%;max-width:420px;
+  box-shadow:0 18px 50px rgba(0,0,0,.25);transform:translateY(12px);transition:transform .25s var(--ease)}
+.modal-wrap.show .modal{transform:none}
+.modal h3{font-family:var(--heading);font-size:19px;font-weight:600;text-align:center;margin-bottom:8px}
+.modal-sub{font-family:var(--heading);font-size:14px;line-height:1.5;color:var(--grey);text-align:center;margin-bottom:18px}
+.modal-rows{background:var(--white);border:1.5px solid var(--line-soft);border-radius:14px;padding:4px 16px;margin-bottom:18px}
+.modal-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px solid var(--line-soft)}
+.modal-row:last-child{border-bottom:none}
+.modal-row span{font-family:var(--heading);font-size:12.5px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--brown);flex:none}
+.modal-row b{font-family:var(--body);font-size:16.5px;font-weight:400;text-align:right;word-break:break-word}
+.btn-plain{background:none;color:var(--grey);width:100%;font-size:15px;padding:12px;margin-top:8px}
+.btn-plain:hover{color:var(--ink)}
 .add-btn{margin-top:16px;display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--heading);font-size:14px;font-weight:600;color:var(--brown);background:var(--peach-faint);border:1.5px dashed var(--peach-soft);border-radius:12px;padding:13px 18px;cursor:pointer;transition:all .15s;width:100%;user-select:none}
 .add-btn:hover{border-color:var(--peach);background:#FFE9D2}
 .add-btn:active{transform:scale(.99)}
@@ -605,7 +620,10 @@ consent:{
 },
 details:{
   render:()=>stepHead("Lastly — your details","Just enough to match your answers to your appointment.")+
-    `<div class="field"><label class="f">FULL NAME</label><input type="text" autocomplete="name" placeholder="Your full name" value="${esc(answers.name)}" oninput="answers.name=this.value;check()"></div>
+    `<div class="two-col">
+       <div class="field"><label class="f">FIRST NAME</label><input type="text" autocomplete="given-name" placeholder="First name" value="${esc(answers.firstName)}" oninput="answers.firstName=this.value;syncName()"></div>
+       <div class="field"><label class="f">SURNAME</label><input type="text" autocomplete="family-name" placeholder="Surname" value="${esc(answers.lastName)}" oninput="answers.lastName=this.value;syncName()"></div>
+     </div>
      <div class="field"><label class="f">DATE OF BIRTH</label>
       <div class="dob-row">
         <input type="text" inputmode="numeric" maxlength="2" placeholder="DD" value="${esc(answers.dobD)}" oninput="setDob('dobD',this)">
@@ -618,7 +636,7 @@ details:{
        <div class="field"><label class="f">EMAIL</label><input type="email" autocomplete="email" placeholder="you@email.com" value="${esc(answers.email)}" oninput="answers.email=this.value;check()"></div>
        <div class="field"><label class="f">MOBILE</label><input type="tel" autocomplete="tel" placeholder="04xx xxx xxx" value="${esc(answers.mobile)}" oninput="answers.mobile=this.value;check()"></div>
      </div>`,
-  valid:()=>nonEmpty(answers.name)&&nonEmpty(answers.dob)&&/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(answers.email||"")&&(answers.mobile||"").replace(/\D/g,"").length>=8
+  valid:()=>nonEmpty(answers.firstName)&&nonEmpty(answers.lastName)&&nonEmpty(answers.dob)&&/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(answers.email||"")&&(answers.mobile||"").replace(/\D/g,"").length>=8
 },
 loading:{
   nav:false, progress:false,
@@ -821,6 +839,8 @@ function buildPayload(){
     treatment_status: answers.treatment_status || null,
 
     full_name: answers.name || '',
+    first_name: answers.firstName || null,
+    last_name: answers.lastName || null,
     date_of_birth: answers.dob || '',
     email: answers.email || '',
     mobile: answers.mobile || '',
@@ -956,6 +976,11 @@ function setDob(field, el){
     el.closest('.field').appendChild(p);
   }
 }
+function syncName(){
+  answers.name = [(answers.firstName||'').trim(), (answers.lastName||'').trim()]
+                   .filter(Boolean).join(' ');
+  check();
+}
 function dobPretty(){
   if(!answers.dob) return '';
   const [y,m,d] = answers.dob.split('-');
@@ -971,6 +996,37 @@ function goToNewPatientForm(){
   }
   window.location.href = NEW_PATIENT_FORM_URL;
 }
+
+/* ============ confirm details before submitting ============ */
+function openConfirm(){
+  const rows = [
+    ['First name', answers.firstName],
+    ['Surname',    answers.lastName],
+    ['Date of birth', dobPretty()],
+    ['Email',      answers.email],
+    ['Mobile',     answers.mobile]
+  ];
+  const el = document.createElement('div');
+  el.className = 'modal-wrap';
+  el.id = 'confirmModal';
+  el.innerHTML = `
+    <div class="modal">
+      <h3>Please check your details</h3>
+      <p class="modal-sub">We use these to match your answers to your appointment. A typo here means your doctor may not see them.</p>
+      <div class="modal-rows">
+        ${rows.map(([k,v])=>`<div class="modal-row"><span>${k}</span><b>${esc(v||'')}</b></div>`).join('')}
+      </div>
+      <button class="btn btn-cta" onclick="confirmYes()">Yes, these are correct</button>
+      <button class="btn btn-plain" onclick="closeConfirm()">Go back and edit</button>
+    </div>`;
+  document.body.appendChild(el);
+  requestAnimationFrame(()=>el.classList.add('show'));
+}
+function closeConfirm(){
+  const el=document.getElementById('confirmModal');
+  if(el){ el.classList.remove('show'); setTimeout(()=>el.remove(),200); }
+}
+function confirmYes(){ closeConfirm(); next(); }
 
 /* ============ engine ============ */
 const stage=document.getElementById('stage');
@@ -1018,7 +1074,11 @@ function next(){
     render();
   },180);
 }
-btnNext.addEventListener('click',()=>{ if(!btnNext.disabled) next(); });
+btnNext.addEventListener('click',()=>{
+  if(btnNext.disabled) return;
+  if(flow[stepIdx]==='details'){ openConfirm(); return; }
+  next();
+});
 btnBack.addEventListener('click',()=>{
   if(!history.length) return;
   stepIdx=history.pop();
