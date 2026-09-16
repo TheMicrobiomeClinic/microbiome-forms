@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
 <style>
 :root{
   --peach:#FFB56C;
@@ -176,17 +175,11 @@ select{background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.o
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:480px){.two-col{grid-template-columns:1fr}}
 .optional-tag{font-weight:400;color:var(--grey);font-size:12px;letter-spacing:0;text-transform:none}
-.turnstile-wrap{display:flex;justify-content:center;margin-top:18px;min-height:70px}
-.turnstile-note{font-family:var(--heading);font-size:12.5px;color:var(--grey);text-align:center;margin-top:8px}
 /* Safari/Chrome fire this animation the moment a field is autofilled, which is
    how we notice fills that never raise an `input` event. */
 @keyframes onAutoFillStart{from{opacity:.99}to{opacity:1}}
 input:-webkit-autofill{animation-name:onAutoFillStart;animation-duration:.01s}
 input:autofill{animation-name:onAutoFillStart;animation-duration:.01s}
-.ts-problem{display:none;background:#FFF6EC;border:1.5px solid #FFD9B3;border-radius:14px;padding:16px 18px;margin-top:14px;font-family:var(--heading);font-size:14px;line-height:1.55;color:var(--ink);text-align:center}
-.ts-problem p{margin-bottom:9px}
-.ts-problem p:last-child{margin-bottom:0}
-.ts-problem .btn-plain{color:var(--brown);font-weight:600;text-decoration:underline;margin-top:2px}
 .fmt-info{background:#FFF6EC;border:1.5px solid #FFD9B3;border-radius:12px;padding:15px 17px;margin-bottom:18px}
 .fmt-info h4{font-family:var(--heading);font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--brown);margin-bottom:7px}
 .fmt-info p{font-size:15.5px;line-height:1.55;margin-bottom:8px}
@@ -621,11 +614,8 @@ consent:{
      </div>
      <div class="opts"><div class="opt sq ${answers.consent?'selected':''}" onclick="answers.consent=!answers.consent;this.classList.toggle('selected');check()">
        <span class="box"></span><span class="txt">I have read and agree to the collection and use of my information as described above, and I confirm the answers I've given are accurate to the best of my knowledge.</span>
-     </div></div>
-     <div class="turnstile-wrap"><div id="turnstileBox"></div></div>
-     <p class="turnstile-note">A quick automated check that you're a real person.</p>`,
-  onRender:()=>mountTurnstile(),
-  valid:()=>answers.consent===true && !!turnstileToken
+     </div></div>`,
+  valid:()=>answers.consent===true
 },
 details:{
   render:()=>stepHead("Lastly — your details","Just enough to match your answers to your appointment.")+
@@ -875,95 +865,6 @@ function startDetailsWatch(){
 }
 function stopDetailsWatch(){ if(detailsWatchTimer){ clearInterval(detailsWatchTimer); detailsWatchTimer=null; } }
 
-/* ============ Turnstile (bot check) ============ */
-const TURNSTILE_SITE_KEY = "0x4AAAAAAEAbihqlASLuDAFR";
-/* Cloudflare tokens die after ~5 minutes. Treat anything older than 4 as spent,
-   so we never post a request the server is guaranteed to reject. */
-const TOKEN_MAX_AGE_MS = 4 * 60 * 1000;
-let turnstileToken = null;
-let turnstileTokenAt = 0;
-let turnstileWidgetId = null;
-let turnstileLoadTimer = null;
-
-function setTurnstileToken(t){
-  turnstileToken = t || null;
-  turnstileTokenAt = t ? Date.now() : 0;
-  check();
-}
-function tokenIsFresh(){
-  return !!turnstileToken && (Date.now() - turnstileTokenAt) < TOKEN_MAX_AGE_MS;
-}
-
-function mountTurnstile(attempt){
-  attempt = attempt || 0;
-  const box = document.getElementById('turnstileBox');
-  if(!box) return;
-  if(!window.turnstile){
-    /* the CF script is async — but it can also be blocked outright by a content
-       blocker or by Private Browsing, so stop waiting after ~12s and say so
-       rather than leaving a dead grey button with no explanation. */
-    if(attempt > 40){ showTurnstileProblem("We couldn't load the security check."); return; }
-    setTimeout(()=>mountTurnstile(attempt+1), 300);
-    return;
-  }
-  setTurnstileToken(null);
-  clearTimeout(turnstileLoadTimer);
-  try{
-    turnstileWidgetId = window.turnstile.render(box, {
-      sitekey: TURNSTILE_SITE_KEY,
-      action: 'pre-consult',
-      callback: (t)=>{ hideTurnstileProblem(); setTurnstileToken(t); },
-      'expired-callback': ()=>{ setTurnstileToken(null); refreshTurnstile(); },
-      'timeout-callback': ()=>{ setTurnstileToken(null); refreshTurnstile(); },
-      'error-callback': ()=>{
-        setTurnstileToken(null);
-        showTurnstileProblem("The security check couldn't complete.");
-      }
-    });
-  }catch(e){
-    console.error('turnstile render failed', e);
-    showTurnstileProblem("We couldn't start the security check.");
-    return;
-  }
-  turnstileLoadTimer = setTimeout(()=>{
-    if(!turnstileToken) showTurnstileProblem("The security check is taking longer than it should.");
-  }, 15000);
-  check();
-}
-
-function showTurnstileProblem(title, body){
-  const wrap = document.querySelector('.turnstile-wrap');
-  if(!wrap || !wrap.parentElement) return;
-  let el = document.getElementById('tsProblem');
-  if(!el){
-    el = document.createElement('div');
-    el.id = 'tsProblem';
-    el.className = 'ts-problem';
-    wrap.parentElement.insertBefore(el, wrap.nextSibling);
-  }
-  el.innerHTML =
-    `<p><strong>${esc(title)}</strong></p>` +
-    `<p>${body || "This can happen in Private Browsing, or with an ad or content blocker switched on. Try turning the blocker off for this page, or reopen the form in a normal window."}</p>` +
-    `<button type="button" class="btn btn-plain" onclick="retryTurnstile()">Try the check again</button>` +
-    `<p class="mini-note">Still stuck? Call us on 03 9007 2630 and we'll take your answers over the phone.</p>`;
-  el.style.display = 'block';
-}
-function hideTurnstileProblem(){
-  const el = document.getElementById('tsProblem');
-  if(el) el.style.display = 'none';
-}
-function retryTurnstile(){
-  hideTurnstileProblem();
-  const box = document.getElementById('turnstileBox');
-  if(box) box.innerHTML = '';
-  turnstileWidgetId = null;
-  mountTurnstile();
-}
-function refreshTurnstile(){
-  if(!window.turnstile || turnstileWidgetId === null) return;
-  try{ window.turnstile.reset(turnstileWidgetId); }catch(e){}
-}
-
 /* ============ submission ============ */
 const ENDPOINT = "https://rtmbmuzccajxidyhvykc.supabase.co/functions/v1/submit-pre-consult";
 /* New Patient form (HealthEngine → Gentu). Initial consults only.
@@ -1041,7 +942,6 @@ function buildPayload(){
 
     consent_given: answers.consent === true,
     disclaimer_accepted: answers.disclaimer === true,
-    turnstile_token: turnstileToken,
     website: ''   // honeypot — must stay empty
   };
 }
@@ -1051,17 +951,6 @@ const SUBMIT_TIMEOUT_MS = 30000;
 
 async function submitForm(){
   if(submitState.sending || submitState.done) return;
-
-  /* The bot-check token is solved two steps earlier and only lives ~5 minutes.
-     If the patient took their time over their details — or iOS suspended the
-     tab while they went to look something up — the token is already dead, the
-     server answers 400, and retrying re-sends the same dead token forever.
-     Catch it here and send them back for a fresh tick instead. */
-  if(!tokenIsFresh()){
-    submitState.sending = false;
-    goBackForFreshCheck();
-    return;
-  }
 
   submitState.sending = true; submitState.error = null;
   const started = Date.now();
@@ -1083,7 +972,6 @@ async function submitForm(){
       const err = new Error(data.error || ('HTTP ' + res.status));
       err.details = data.details || (data.message ? [data.message] : null);
       if(res.status === 429) err.kind = 'ratelimit';
-      else if(/bot check/i.test(data.error || '')) err.kind = 'botcheck';
       else if(res.status === 400) err.kind = 'validation';
       else err.kind = 'server';
       throw err;
@@ -1103,27 +991,11 @@ async function submitForm(){
     setTimeout(()=>{
       if(flow[stepIdx] !== 'loading') return;
       if(submitState.done){ next(); return; }
-      const kind = submitState.error && submitState.error.kind;
-      if(kind === 'botcheck'){ goBackForFreshCheck(); return; }
       renderSubmitError(submitState.error);
     }, wait);
   }
 }
 
-/* The token is spent. Walk them back to the consent step, re-arm the widget and
-   explain — rather than failing with a misleading "check your connection". */
-function goBackForFreshCheck(){
-  submitState.sending = false; submitState.done = false; submitState.error = null;
-  setTurnstileToken(null);
-  const at = flow.indexOf('consent');
-  if(at < 0){ renderSubmitError({kind:'botcheck'}); return; }
-  stepIdx = at;
-  render();
-  setTimeout(()=>showTurnstileProblem(
-    "Your security check timed out.",
-    "It only stays valid for a few minutes. Everything you've written is still saved — just complete the check below and continue."
-  ), 400);
-}
 
 function renderSubmitError(err){
   const kind = (err && err.kind) || 'network';
