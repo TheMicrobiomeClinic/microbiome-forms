@@ -178,6 +178,15 @@ select{background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.o
 .optional-tag{font-weight:400;color:var(--grey);font-size:12px;letter-spacing:0;text-transform:none}
 .turnstile-wrap{display:flex;justify-content:center;margin-top:18px;min-height:70px}
 .turnstile-note{font-family:var(--heading);font-size:12.5px;color:var(--grey);text-align:center;margin-top:8px}
+/* Safari/Chrome fire this animation the moment a field is autofilled, which is
+   how we notice fills that never raise an `input` event. */
+@keyframes onAutoFillStart{from{opacity:.99}to{opacity:1}}
+input:-webkit-autofill{animation-name:onAutoFillStart;animation-duration:.01s}
+input:autofill{animation-name:onAutoFillStart;animation-duration:.01s}
+.ts-problem{display:none;background:#FFF6EC;border:1.5px solid #FFD9B3;border-radius:14px;padding:16px 18px;margin-top:14px;font-family:var(--heading);font-size:14px;line-height:1.55;color:var(--ink);text-align:center}
+.ts-problem p{margin-bottom:9px}
+.ts-problem p:last-child{margin-bottom:0}
+.ts-problem .btn-plain{color:var(--brown);font-weight:600;text-decoration:underline;margin-top:2px}
 .fmt-info{background:#FFF6EC;border:1.5px solid #FFD9B3;border-radius:12px;padding:15px 17px;margin-bottom:18px}
 .fmt-info h4{font-family:var(--heading);font-size:13px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--brown);margin-bottom:7px}
 .fmt-info p{font-size:15.5px;line-height:1.55;margin-bottom:8px}
@@ -621,27 +630,32 @@ consent:{
 details:{
   render:()=>stepHead("Lastly — your details","Just enough to match your answers to your appointment.")+
     `<div class="two-col">
-       <div class="field"><label class="f">FIRST NAME</label><input type="text" autocomplete="given-name" placeholder="First name" value="${esc(answers.firstName)}" oninput="answers.firstName=this.value;syncName()"></div>
-       <div class="field"><label class="f">SURNAME</label><input type="text" autocomplete="family-name" placeholder="Surname" value="${esc(answers.lastName)}" oninput="answers.lastName=this.value;syncName()"></div>
+       <div class="field"><label class="f">FIRST NAME</label><input type="text" id="fFirst" autocomplete="given-name" placeholder="First name" value="${esc(answers.firstName)}" oninput="answers.firstName=this.value;syncName()"></div>
+       <div class="field"><label class="f">SURNAME</label><input type="text" id="fLast" autocomplete="family-name" placeholder="Surname" value="${esc(answers.lastName)}" oninput="answers.lastName=this.value;syncName()"></div>
      </div>
      <div class="field"><label class="f">DATE OF BIRTH</label>
       <div class="dob-row">
-        <input type="text" inputmode="numeric" maxlength="2" placeholder="DD" value="${esc(answers.dobD)}" oninput="setDob('dobD',this)">
-        <input type="text" inputmode="numeric" maxlength="2" placeholder="MM" value="${esc(answers.dobM)}" oninput="setDob('dobM',this)">
-        <input type="text" inputmode="numeric" maxlength="4" placeholder="YYYY" value="${esc(answers.dobY)}" oninput="setDob('dobY',this)">
+        <input type="text" inputmode="numeric" maxlength="2" id="fDobD" placeholder="DD" value="${esc(answers.dobD)}" oninput="setDob('dobD',this)">
+        <input type="text" inputmode="numeric" maxlength="2" id="fDobM" placeholder="MM" value="${esc(answers.dobM)}" oninput="setDob('dobM',this)">
+        <input type="text" inputmode="numeric" maxlength="4" id="fDobY" placeholder="YYYY" value="${esc(answers.dobY)}" oninput="setDob('dobY',this)">
       </div>
       ${answers.dobD||answers.dobM||answers.dobY ? (answers.dob ? `<p class="hint left" style="color:#5D5A49">${dobPretty()}</p>` : `<p class="hint left" style="color:#B04A2B">Please enter a valid date as DD / MM / YYYY.</p>`) : ''}
      </div>
      <div class="two-col">
-       <div class="field"><label class="f">EMAIL</label><input type="email" autocomplete="email" placeholder="you@email.com" value="${esc(answers.email)}" oninput="answers.email=this.value;check()"></div>
-       <div class="field"><label class="f">MOBILE</label><input type="tel" autocomplete="tel" placeholder="04xx xxx xxx" value="${esc(answers.mobile)}" oninput="answers.mobile=this.value;check()"></div>
+       <div class="field"><label class="f">EMAIL</label><input type="email" id="fEmail" autocomplete="email" placeholder="you@email.com" value="${esc(answers.email)}" oninput="answers.email=this.value;check()"></div>
+       <div class="field"><label class="f">MOBILE</label><input type="tel" id="fMobile" autocomplete="tel" placeholder="04xx xxx xxx" value="${esc(answers.mobile)}" oninput="answers.mobile=this.value;check()"></div>
      </div>`,
+  onRender:()=>startDetailsWatch(),
   valid:()=>nonEmpty(answers.firstName)&&nonEmpty(answers.lastName)&&nonEmpty(answers.dob)&&/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(answers.email||"")&&(answers.mobile||"").replace(/\D/g,"").length>=8
 },
 loading:{
   nav:false, progress:false,
   render:()=>{
-    submitForm();
+    /* Deferred on purpose: submitForm() can redirect us (an expired bot check
+       sends the patient back to the consent step), and it must not run while
+       this step's own HTML is still being assembled — the string returned below
+       would land in #stage afterwards and paint over the redirect. */
+    setTimeout(submitForm, 0);
     return `
     <div class="loadwrap">
       <div class="spinner"></div>
@@ -709,7 +723,7 @@ const FLOW_FOLLOWUP_PRE = ['welcome','gate','f_treatment','f_since','i_goals','i
 flow = FLOW_INITIAL; // until gate answered
 
 /* ============ helpers ============ */
-function esc(v){return (v||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
+function esc(v){return (v||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}
 function nonEmpty(v){return v&&v.trim().length>0}
 function stepHead(t,s){return `<div class="step-head"><h1>${t}</h1>${s?`<p class="sub">${s}</p>`:'<div style="height:14px"></div>'}</div>`}
 function radios(key,items){
@@ -802,24 +816,152 @@ function toggleNewSymExtra(){
   if(x) x.style.display = nonEmpty(answers.newSym)?'block':'none';
 }
 
+/* ============ details step: trust the DOM, not just input events ============
+   Safari AutoFill (contact card, password manager, iOS keyboard suggestions)
+   can fill these boxes without firing an `input` event the page ever sees.
+   The boxes look full, `answers` stays empty, and the Next button never
+   enables — which is exactly "I filled it all in and it won't submit".
+   So the details step re-reads its values off the DOM: on change/blur, on the
+   autofill animation, and on a short poll while the step is on screen. */
+const DETAIL_FIELDS = [
+  ['fFirst','firstName'], ['fLast','lastName'],
+  ['fDobD','dobD'], ['fDobM','dobM'], ['fDobY','dobY'],
+  ['fEmail','email'], ['fMobile','mobile']
+];
+let detailsWatchTimer = null;
+
+function recomputeDob(){
+  const d=answers.dobD, m=answers.dobM, y=answers.dobY;
+  answers.dob='';
+  if(d && m && y && String(y).length===4){
+    const dd=parseInt(d,10), mm=parseInt(m,10), yy=parseInt(y,10);
+    const dt=new Date(yy,mm-1,dd), now=new Date();
+    if(dt.getFullYear()===yy && dt.getMonth()===mm-1 && dt.getDate()===dd && yy>=1900 && dt<=now){
+      answers.dob = `${yy}-${String(mm).padStart(2,'0')}-${String(dd).padStart(2,'0')}`;
+    }
+  }
+}
+
+/* returns true if anything actually changed. Never calls check() — the caller does. */
+function syncDetailsFromDom(){
+  let changed=false;
+  for(let i=0;i<DETAIL_FIELDS.length;i++){
+    const id=DETAIL_FIELDS[i][0], key=DETAIL_FIELDS[i][1];
+    const el=document.getElementById(id);
+    if(!el) continue;
+    let v=el.value==null?'':el.value;
+    if(id.indexOf('fDob')===0) v=v.replace(/\D/g,'');
+    if((answers[key]==null?'':answers[key])!==v){ answers[key]=v; changed=true; }
+  }
+  if(changed){
+    answers.name=[(answers.firstName||'').trim(),(answers.lastName||'').trim()].filter(Boolean).join(' ');
+    recomputeDob();
+  }
+  return changed;
+}
+
+function startDetailsWatch(){
+  stopDetailsWatch();
+  const step=stage.querySelector('.step');
+  if(!step) return;
+  const pull=()=>{ syncDetailsFromDom(); check(); };
+  ['change','blur','focusout','input'].forEach(ev=>step.addEventListener(ev,pull,true));
+  step.addEventListener('animationstart',e=>{ if(e.animationName==='onAutoFillStart') pull(); },true);
+  detailsWatchTimer=setInterval(()=>{
+    if(flow[stepIdx]!=='details'){ stopDetailsWatch(); return; }
+    if(syncDetailsFromDom()) check();
+  },400);
+  pull();
+}
+function stopDetailsWatch(){ if(detailsWatchTimer){ clearInterval(detailsWatchTimer); detailsWatchTimer=null; } }
+
 /* ============ Turnstile (bot check) ============ */
 const TURNSTILE_SITE_KEY = "0x4AAAAAAEAbihqlASLuDAFR";
+/* Cloudflare tokens die after ~5 minutes. Treat anything older than 4 as spent,
+   so we never post a request the server is guaranteed to reject. */
+const TOKEN_MAX_AGE_MS = 4 * 60 * 1000;
 let turnstileToken = null;
+let turnstileTokenAt = 0;
 let turnstileWidgetId = null;
+let turnstileLoadTimer = null;
 
-function mountTurnstile(){
+function setTurnstileToken(t){
+  turnstileToken = t || null;
+  turnstileTokenAt = t ? Date.now() : 0;
+  check();
+}
+function tokenIsFresh(){
+  return !!turnstileToken && (Date.now() - turnstileTokenAt) < TOKEN_MAX_AGE_MS;
+}
+
+function mountTurnstile(attempt){
+  attempt = attempt || 0;
   const box = document.getElementById('turnstileBox');
   if(!box) return;
-  if(!window.turnstile){ setTimeout(mountTurnstile, 300); return; }
-  turnstileToken = null;
-  turnstileWidgetId = window.turnstile.render(box, {
-    sitekey: TURNSTILE_SITE_KEY,
-    action: 'pre-consult',
-    callback: (t)=>{ turnstileToken = t; check(); },
-    'expired-callback': ()=>{ turnstileToken = null; check(); },
-    'error-callback': ()=>{ turnstileToken = null; check(); }
-  });
+  if(!window.turnstile){
+    /* the CF script is async — but it can also be blocked outright by a content
+       blocker or by Private Browsing, so stop waiting after ~12s and say so
+       rather than leaving a dead grey button with no explanation. */
+    if(attempt > 40){ showTurnstileProblem("We couldn't load the security check."); return; }
+    setTimeout(()=>mountTurnstile(attempt+1), 300);
+    return;
+  }
+  setTurnstileToken(null);
+  clearTimeout(turnstileLoadTimer);
+  try{
+    turnstileWidgetId = window.turnstile.render(box, {
+      sitekey: TURNSTILE_SITE_KEY,
+      action: 'pre-consult',
+      callback: (t)=>{ hideTurnstileProblem(); setTurnstileToken(t); },
+      'expired-callback': ()=>{ setTurnstileToken(null); refreshTurnstile(); },
+      'timeout-callback': ()=>{ setTurnstileToken(null); refreshTurnstile(); },
+      'error-callback': ()=>{
+        setTurnstileToken(null);
+        showTurnstileProblem("The security check couldn't complete.");
+      }
+    });
+  }catch(e){
+    console.error('turnstile render failed', e);
+    showTurnstileProblem("We couldn't start the security check.");
+    return;
+  }
+  turnstileLoadTimer = setTimeout(()=>{
+    if(!turnstileToken) showTurnstileProblem("The security check is taking longer than it should.");
+  }, 15000);
   check();
+}
+
+function showTurnstileProblem(title, body){
+  const wrap = document.querySelector('.turnstile-wrap');
+  if(!wrap || !wrap.parentElement) return;
+  let el = document.getElementById('tsProblem');
+  if(!el){
+    el = document.createElement('div');
+    el.id = 'tsProblem';
+    el.className = 'ts-problem';
+    wrap.parentElement.insertBefore(el, wrap.nextSibling);
+  }
+  el.innerHTML =
+    `<p><strong>${esc(title)}</strong></p>` +
+    `<p>${body || "This can happen in Private Browsing, or with an ad or content blocker switched on. Try turning the blocker off for this page, or reopen the form in a normal window."}</p>` +
+    `<button type="button" class="btn btn-plain" onclick="retryTurnstile()">Try the check again</button>` +
+    `<p class="mini-note">Still stuck? Call us on 03 9007 2630 and we'll take your answers over the phone.</p>`;
+  el.style.display = 'block';
+}
+function hideTurnstileProblem(){
+  const el = document.getElementById('tsProblem');
+  if(el) el.style.display = 'none';
+}
+function retryTurnstile(){
+  hideTurnstileProblem();
+  const box = document.getElementById('turnstileBox');
+  if(box) box.innerHTML = '';
+  turnstileWidgetId = null;
+  mountTurnstile();
+}
+function refreshTurnstile(){
+  if(!window.turnstile || turnstileWidgetId === null) return;
+  try{ window.turnstile.reset(turnstileWidgetId); }catch(e){}
 }
 
 /* ============ submission ============ */
@@ -904,66 +1046,143 @@ function buildPayload(){
   };
 }
 
+/* A hung request used to spin the loader forever — cap it. */
+const SUBMIT_TIMEOUT_MS = 30000;
+
 async function submitForm(){
   if(submitState.sending || submitState.done) return;
+
+  /* The bot-check token is solved two steps earlier and only lives ~5 minutes.
+     If the patient took their time over their details — or iOS suspended the
+     tab while they went to look something up — the token is already dead, the
+     server answers 400, and retrying re-sends the same dead token forever.
+     Catch it here and send them back for a fresh tick instead. */
+  if(!tokenIsFresh()){
+    submitState.sending = false;
+    goBackForFreshCheck();
+    return;
+  }
+
   submitState.sending = true; submitState.error = null;
   const started = Date.now();
+  const ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+  const killer = ctrl ? setTimeout(()=>ctrl.abort(), SUBMIT_TIMEOUT_MS) : null;
+
   try{
-    const res = await fetch(ENDPOINT, {
+    const opts = {
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body: JSON.stringify(buildPayload())
-    });
+    };
+    if(ctrl) opts.signal = ctrl.signal;
+
+    const res = await fetch(ENDPOINT, opts);
     const data = await res.json().catch(()=>({}));
-    if(!res.ok || !data.ok) throw new Error(data.error || ('HTTP '+res.status));
+
+    if(!res.ok || !data.ok){
+      const err = new Error(data.error || ('HTTP ' + res.status));
+      err.details = data.details || (data.message ? [data.message] : null);
+      if(res.status === 429) err.kind = 'ratelimit';
+      else if(/bot check/i.test(data.error || '')) err.kind = 'botcheck';
+      else if(res.status === 400) err.kind = 'validation';
+      else err.kind = 'server';
+      throw err;
+    }
     submitState.result = data;
     submitState.done = true;
   }catch(err){
-    console.error('submit failed', err);
-    submitState.error = err.message || 'Network error';
+    if(err && err.name === 'AbortError') err.kind = 'timeout';
+    else if(err && !err.kind) err.kind = 'network';
+    console.error('submit failed', err && err.kind, err);
+    submitState.error = err;
   }finally{
+    if(killer) clearTimeout(killer);
     submitState.sending = false;
     // let the loading animation breathe for at least 2.2s
     const wait = Math.max(0, 2200 - (Date.now()-started));
     setTimeout(()=>{
       if(flow[stepIdx] !== 'loading') return;
-      if(submitState.done) next();
-      else renderSubmitError();
+      if(submitState.done){ next(); return; }
+      const kind = submitState.error && submitState.error.kind;
+      if(kind === 'botcheck'){ goBackForFreshCheck(); return; }
+      renderSubmitError(submitState.error);
     }, wait);
   }
 }
 
-function renderSubmitError(){
+/* The token is spent. Walk them back to the consent step, re-arm the widget and
+   explain — rather than failing with a misleading "check your connection". */
+function goBackForFreshCheck(){
+  submitState.sending = false; submitState.done = false; submitState.error = null;
+  setTurnstileToken(null);
+  const at = flow.indexOf('consent');
+  if(at < 0){ renderSubmitError({kind:'botcheck'}); return; }
+  stepIdx = at;
+  render();
+  setTimeout(()=>showTurnstileProblem(
+    "Your security check timed out.",
+    "It only stays valid for a few minutes. Everything you've written is still saved — just complete the check below and continue."
+  ), 400);
+}
+
+function renderSubmitError(err){
+  const kind = (err && err.kind) || 'network';
+  let title = "We couldn't send your answers";
+  let body  = "Your responses are still here — nothing is lost. Please check your connection and try again.";
+  let extra = '';
+
+  if(kind === 'timeout'){
+    title = "That's taking longer than it should";
+    body  = "Your answers are still here. This is usually a patchy connection — please try again, ideally on Wi-Fi.";
+  }else if(kind === 'ratelimit'){
+    title = "This form has been submitted a few times already";
+    body  = "So we don't double up your answers, please call the clinic on 03 9007 2630 and we'll check what we've received.";
+  }else if(kind === 'validation'){
+    title = "One of your details needs a second look";
+    body  = (err && err.details && err.details.length)
+      ? err.details.join(' ')
+      : "Please go back and check your name, date of birth, email and mobile.";
+    extra = `<button class="btn btn-plain" onclick="backToDetails()">Go back and edit my details</button>`;
+  }else if(kind === 'server'){
+    title = "We couldn't save your answers just now";
+    body  = "Your responses are still here. Please try again in a moment.";
+  }
+
   stage.innerHTML = `<div class="step"><div class="done" style="padding-top:6vh">
     <div class="bigtick" style="background:#FDE7E0"><svg viewBox="0 0 24 24" stroke="#C0553D"><path d="M12 9v4"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></div>
-    <h1>We couldn't send your answers</h1>
-    <p class="sub">Your responses are still here — nothing is lost. Please check your connection and try again.</p>
+    <h1>${esc(title)}</h1>
+    <p class="sub">${esc(body)}</p>
     <button class="btn btn-cta" onclick="retrySubmit()">Try again</button>
+    ${extra}
     <p class="mini-note">Still not working? Call us on 03 9007 2630 and we'll take your answers over the phone.</p>
   </div></div>`;
   navbar.style.display='none';
 }
-function retrySubmit(){ submitState.error=null; render(); }
+function retrySubmit(){
+  submitState.sending = false;
+  submitState.done    = false;
+  submitState.error   = null;
+  render();
+}
+function backToDetails(){
+  submitState.sending = false; submitState.error = null;
+  const at = flow.indexOf('details');
+  if(at >= 0) stepIdx = at;
+  render();
+}
 
 /* ---- Date of birth: entered DD / MM / YYYY, stored as ISO ---- */
 function setDob(field, el){
   el.value = el.value.replace(/\D/g,'');
   answers[field] = el.value;
   const d = answers.dobD, m = answers.dobM, y = answers.dobY;
-  answers.dob = '';
-  if(d && m && y && y.length === 4){
-    const dd = parseInt(d,10), mm = parseInt(m,10), yy = parseInt(y,10);
-    const dt = new Date(yy, mm-1, dd);
-    const now = new Date();
-    if(dt.getFullYear()===yy && dt.getMonth()===mm-1 && dt.getDate()===dd
-       && yy >= 1900 && dt <= now){
-      answers.dob = `${yy}-${String(mm).padStart(2,'0')}-${String(dd).padStart(2,'0')}`;
-    }
-  }
-  // auto-jump to the next box
+  recomputeDob();
+  // auto-jump to the next box (the one after this, not just any empty one —
+  // :placeholder-shown sends focus backwards when a box is edited out of order)
   if(el.value.length === parseInt(el.getAttribute('maxlength'),10)){
-    const nx = el.parentElement.querySelector('input:placeholder-shown');
-    if(nx && nx !== el) nx.focus();
+    const boxes = Array.prototype.slice.call(el.parentElement.querySelectorAll('input'));
+    const nx = boxes[boxes.indexOf(el) + 1];
+    if(nx && !nx.value) nx.focus();
   }
   check();
   const hint = el.closest('.field').querySelector('.hint');
@@ -1039,6 +1258,7 @@ function currentStep(){return steps[flow[stepIdx]]}
 function visibleFlow(){return flow.filter(id=>{const s=steps[id];return !s.showIf||s.showIf()})}
 
 function render(){
+  stopDetailsWatch();
   const id=flow[stepIdx], st=steps[id];
   stage.innerHTML=`<div class="step">${st.render()}</div>`;
   stage.scrollTop=0; window.scrollTo(0,0);
@@ -1062,6 +1282,8 @@ function render(){
 }
 function check(){
   const st=currentStep();
+  // autofilled values may never have raised an event — read them back first
+  if(flow[stepIdx]==='details') syncDetailsFromDom();
   if(st.valid) btnNext.disabled=!st.valid();
   else btnNext.disabled=false;
 }
@@ -1075,6 +1297,7 @@ function next(){
   },180);
 }
 btnNext.addEventListener('click',()=>{
+  if(flow[stepIdx]==='details'){ syncDetailsFromDom(); check(); }
   if(btnNext.disabled) return;
   if(flow[stepIdx]==='details'){ openConfirm(); return; }
   next();
@@ -1084,6 +1307,24 @@ btnBack.addEventListener('click',()=>{
   stepIdx=history.pop();
   render();
 });
+/* iOS Safari keeps position:fixed pinned to the LAYOUT viewport, so when the
+   keyboard opens on the details step the Next button can end up behind it —
+   the form looks complete with no way to continue. Chrome/Android shrink the
+   layout viewport instead, which is why this only bites in Safari. Follow the
+   visual viewport so the button stays reachable. */
+function trackKeyboard(){
+  const vv = window.visualViewport;
+  if(!vv) return;
+  const apply = ()=>{
+    const overlap = Math.max(0, window.innerHeight - (vv.height + vv.offsetTop));
+    navbar.style.transform = overlap > 40 ? 'translateY(-' + overlap + 'px)' : '';
+  };
+  vv.addEventListener('resize', apply);
+  vv.addEventListener('scroll', apply);
+  apply();
+}
+trackKeyboard();
+
 render();
 </script>
 </body>
